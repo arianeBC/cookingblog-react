@@ -4,7 +4,7 @@ import {createStore} from 'redux';
 import createHistory from 'history/createBrowserHistory';
 import {Provider} from 'react-redux';
 import {ConnectedRouter} from 'react-router-redux';
-import {Route, Switch} from 'react-router';
+import {Route} from 'react-router';
 import App from './components/App';
 import reducer from './reducer';
 
