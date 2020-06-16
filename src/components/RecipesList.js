@@ -3,7 +3,6 @@ import React from 'react';
 class RecipesList extends React.Component {
    constructor(props) {
       super(props);
-      console.log(props);
    }
 
    render() {

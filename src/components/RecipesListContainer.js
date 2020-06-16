@@ -1,27 +1,24 @@
 import React from 'react';
 import RecipesList from './RecipesList';
-import {recipesAdd, recipesList} from '../actions/actions';
+import {recipesAdd, recipesListFetch, recipesList} from '../actions/actions';
 import {connect} from 'react-redux';
-import {requests} from '../agent';
 
 const mapStateToProps = state => ({
    ...state.recipesList
 });
 
 const mapDispatchToProps = {
-   recipesList,
-   recipesAdd
+   recipesAdd,
+   recipesListFetch
 };
 
 class RecipesListContainer extends React.Component {
    componentDidMount() {
-      requests.get('/recipes').then(response => console.log(response));
       setTimeout(this.props.recipesAdd, 3000);
-      this.props.recipesList();
+      this.props.recipesListFetch();
    }
 
    render() {
-      console.log(this.props);
       return (<RecipesList posts={this.props.posts} />)
    }
 }
