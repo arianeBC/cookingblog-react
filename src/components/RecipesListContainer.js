@@ -19,7 +19,9 @@ class RecipesListContainer extends React.Component {
    }
 
    render() {
-      return (<RecipesList posts={this.props.posts} />)
+      const {posts, isFetching} = this.props;
+
+      return (<RecipesList posts={posts} isFetching={isFetching} />)
    }
 }
 
