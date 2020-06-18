@@ -2,6 +2,7 @@ import React from 'react';
 import RecipesList from './RecipesList';
 import {recipesListFetch} from '../actions/actions';
 import {connect} from 'react-redux';
+import {Spinner} from './Spinner';
 
 const mapStateToProps = state => ({
    ...state.recipesList
@@ -19,7 +20,11 @@ class RecipesListContainer extends React.Component {
    render() {
       const {posts, isFetching} = this.props;
 
-      return (<RecipesList posts={posts} isFetching={isFetching} />)
+      if (isFetching) {
+         return(<Spinner/>);
+      }
+
+      return (<RecipesList posts={posts} />)
    }
 }
 

@@ -1,4 +1,4 @@
-import {RECIPES_REQUEST, RECIPES_RECEIVED ,RECIPES_ERROR} from '../actions/constants';
+import {RECIPES_ERROR, RECIPES_RECEIVED, RECIPES_REQUEST, RECIPES_UNLOAD} from '../actions/constants';
 
 export default (state = {
    post: null,
@@ -20,6 +20,12 @@ export default (state = {
          return {
             ...state,
             isFecthing: false
+         };
+      case RECIPES_UNLOAD:
+         return {
+            ...state,
+            isFecthing: false,
+            post: null
          };
       default:
          return state;

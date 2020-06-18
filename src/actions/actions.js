@@ -7,7 +7,7 @@ import {
    RECIPES_REQUEST,
    RECIPES_RECEIVED,
    RECIPES_ERROR,
-   RECIPES_ADD
+   RECIPES_UNLOAD
 } from './constants';
 import request from 'superagent';
 
@@ -46,6 +46,10 @@ export const recipesReceived = (data) => ({
 export const recipesError = (error) => ({
    type: RECIPES_ERROR,
    error
+});
+
+export const recipesUnload = () => ({
+   type: RECIPES_UNLOAD
 });
 
 export const recipesFetch = (id) => {

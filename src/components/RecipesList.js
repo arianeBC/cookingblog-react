@@ -1,6 +1,7 @@
 import React from 'react';
 import timeago from 'timeago.js';
 import {Link} from 'react-router-dom';
+import {Message} from './Message';
 
 var timeago_fr = function(number, index, total_sec) {
    return [
@@ -25,15 +26,10 @@ timeago.register('fr', timeago_fr);
 class RecipesList extends React.Component {
 
    render() {
-      const {posts, isFetching} = this.props;
-      const date = posts && posts.map(post => post.createdAt);
-
-      if (isFetching) {
-         return(<div><i className="fas fa-spinner fa-spin"/></div>);
-      }
+      const {posts} = this.props;
 
       if (null === posts || 0 === posts.length) {
-         return (<div>No blog posts</div>);
+         return (<Message message="Aucune recette trouvé"/>);
       }
 
       return (

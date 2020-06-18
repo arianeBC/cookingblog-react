@@ -1,29 +1,36 @@
 import React from 'react';
-import {recipesFetch} from '../actions/actions';
+import {recipesFetch, recipesUnload} from '../actions/actions';
 import {connect} from 'react-redux';
+import {Recipes} from './Recipes';
+import {Spinner} from './Spinner';
 
-const mapStateToProps = state => ({
+const mapeStateToProps = state => ({
    ...state.recipes
 });
 
 const mapDispatchToProps = {
-   recipesFetch
+   recipesFetch,
+   recipesUnload
 };
 
 class RecipesContainer extends React.Component {
    componentDidMount() {
-      console.log(this.props);
-      console.log(this.props.match.params.id);
-      this.props.recipesFetch(this.props.match.params.id).then(response => console.log(this.props.post));
+      this.props.recipesFetch(this.props.match.params.id);
+   }
+
+   componentWillUnmount() {
+      this.props.recipesUnload();
    }
 
    render() {
-      return (
-         <div>
-            Hello from Recipe/ID
-         </div>
-      )
+      const {isFetching, post} = this.props;
+      
+      if (isFetching) {
+         return (<Spinner/>);
+      }
+
+      return (<Recipes post={post}/>)
    }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecipesContainer);
+export default connect(mapeStateToProps, mapDispatchToProps)(RecipesContainer);
