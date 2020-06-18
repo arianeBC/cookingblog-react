@@ -1,4 +1,4 @@
-import {RECIPES_LIST_REQUEST, RECIPES_LIST_RECEIVED, RECIPES_LIST_ERROR, RECIPES_LIST_ADD} from "../actions/actions"
+import {RECIPES_LIST_REQUEST, RECIPES_LIST_RECEIVED, RECIPES_LIST_ERROR, RECIPES_LIST_ADD} from '../actions/constants';
 
 export default(state = {
    posts: null,
