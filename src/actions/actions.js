@@ -7,22 +7,25 @@ import {
    RECIPES_REQUEST,
    RECIPES_RECEIVED,
    RECIPES_ERROR,
-   RECIPES_UNLOAD
+   RECIPES_UNLOAD,
+   COMMENTS_LIST_REQUEST, 
+   COMMENTS_LIST_RECEIVED, 
+   COMMENTS_LIST_ERROR, 
+   COMMENTS_LIST_UNLOAD,
 } from './constants';
-import request from 'superagent';
 
 export const recipesListRequest = () => ({
    type: RECIPES_LIST_REQUEST,
 });
 
-export const recipesListError = (error) => ({
-   type: RECIPES_LIST_ERROR,
-   error
-});
-
 export const recipesListReceived = (data) => ({
    type: RECIPES_LIST_RECEIVED,
    data
+});
+
+export const recipesListError = (error) => ({
+   type: RECIPES_LIST_ERROR,
+   error
 });
 
 export const recipesListFetch = () => {
@@ -58,6 +61,33 @@ export const recipesFetch = (id) => {
       return requests.get(`/recipes/${id}`)
          .then(response => dispatch(recipesReceived(response)))
          .catch(error => dispatch(recipesError(error)));
+   }
+};
+
+export const commentsListRequest = () => ({
+   type: COMMENTS_LIST_REQUEST,
+});
+
+export const commentsListReceived = (data) => ({
+   type: COMMENTS_LIST_RECEIVED,
+   data
+});
+
+export const commentsListError = (error) => ({
+   type: COMMENTS_LIST_ERROR,
+   error
+});
+
+export const commentsListUnload = () => ({
+   type: COMMENTS_LIST_UNLOAD
+});
+
+export const commentsListFetch = (id) => {
+   return (dispatch) => {
+      dispatch(commentsListRequest());
+      return requests.get(`/recipes/${id}/comments`)
+         .then(response => dispatch(commentsListReceived(response)))
+         .catch(error => dispatch(commentsListError(error)));
    }
 };
 
