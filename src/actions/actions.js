@@ -91,6 +91,15 @@ export const commentsListFetch = (id) => {
    }
 };
 
+export const userLoginAttempt = (username, password) => {
+   return (dispatch) => {
+      return requests.post('/login_check', {username, password})
+         .then(response => console.log(response))
+         .catch(error => {console.log('Login Failed');
+      });
+   }
+};
+
 export const recipesAdd = () => ({
    type: RECIPES_LIST_ADD,
    data: {
