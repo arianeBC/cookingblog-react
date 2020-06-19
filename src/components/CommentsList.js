@@ -5,6 +5,7 @@ import {Message} from './Message';
 export class CommentsList extends React.Component {
    render() {
       const {commentsList} = this.props;
+      console.log(commentsList);
 
       if (null === commentsList) {
          return (<Message message="Aucun commentaire pour l'instant : Soyez le premier à donner votre avis !"/>);
@@ -12,15 +13,21 @@ export class CommentsList extends React.Component {
 
       return (
          <div className="card mb-3 mt-3 shadow-sm">
-            {/* <div className="card-body">
-               <h2>{commentsList.usergroup}</h2>
-               <p className="card-text">{commentsList.content}</p>
-               <p className="card-text border-top">
-                  <small className="text-muted">
-                     {timeago().format(commentsList.publishedAt, 'fr')}
-                  </small>
-               </p>
-            </div> */}
+            {commentsList.map(comments => {
+               return (
+                  <div className="card-body border-bottom" key={comments.id}>
+                     <p className="card-text mb-6">
+                        {comments.content}
+                     </p>
+                     <p className="card-text">
+                        <small className="text-muted">
+                           {timeago().format(comments.publishedAt, 'fr')} par&nbsp;
+                           {comments.user.usergroup}
+                        </small>
+                     </p>
+                  </div>
+               );
+            })}
          </div>
       )
    }

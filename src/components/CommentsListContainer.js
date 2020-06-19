@@ -1,8 +1,8 @@
 import React from 'react';
-import {CommentsList} from './CommentsList';
 import {commentsListFetch, commentsListUnload} from '../actions/actions';
 import {connect} from 'react-redux';
 import {Spinner} from './Spinner';
+import {CommentsList} from './CommentsList';
 
 const mapStateToProps = state => ({
    ...state.commentsList
@@ -23,7 +23,7 @@ class CommentsListContainer extends React.Component {
    }
 
    render() {
-      const {commentsList, isFetching} = this.props;
+      const {isFetching, commentsList} = this.props;
 
       if (isFetching) {
          return(<Spinner/>);

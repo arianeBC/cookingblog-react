@@ -10,7 +10,6 @@ export default(state = {
             ...state,
             isFetching: true,
          };
-         console.log(state);
          return state;
       case RECIPES_LIST_RECEIVED:
          state = {
@@ -18,7 +17,6 @@ export default(state = {
             posts: action.data['hydra:member'],
             isFetching: false,
          };
-         console.log(state);
          return state;
       case RECIPES_LIST_ERROR:
          return {
@@ -31,7 +29,6 @@ export default(state = {
             ...state,
             posts: state.posts ? state.posts.concat(action.data) : state.posts
          };
-         console.log(state);
          return state;
       default:
          return state;

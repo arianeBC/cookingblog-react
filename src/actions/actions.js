@@ -1,16 +1,16 @@
 import {requests} from '../agent';
 import {
    RECIPES_LIST_REQUEST, 
-   RECIPES_LIST_RECEIVED, 
    RECIPES_LIST_ERROR, 
+   RECIPES_LIST_RECEIVED, 
    RECIPES_LIST_ADD,
    RECIPES_REQUEST,
-   RECIPES_RECEIVED,
    RECIPES_ERROR,
+   RECIPES_RECEIVED,
    RECIPES_UNLOAD,
    COMMENTS_LIST_REQUEST, 
-   COMMENTS_LIST_RECEIVED, 
    COMMENTS_LIST_ERROR, 
+   COMMENTS_LIST_RECEIVED, 
    COMMENTS_LIST_UNLOAD,
 } from './constants';
 
@@ -18,14 +18,14 @@ export const recipesListRequest = () => ({
    type: RECIPES_LIST_REQUEST,
 });
 
-export const recipesListReceived = (data) => ({
-   type: RECIPES_LIST_RECEIVED,
-   data
-});
-
 export const recipesListError = (error) => ({
    type: RECIPES_LIST_ERROR,
    error
+});
+
+export const recipesListReceived = (data) => ({
+   type: RECIPES_LIST_RECEIVED,
+   data
 });
 
 export const recipesListFetch = () => {
@@ -41,14 +41,14 @@ export const recipesRequest = () => ({
    type: RECIPES_REQUEST
 });
 
-export const recipesReceived = (data) => ({
-   type: RECIPES_RECEIVED,
-   data
-});
-
 export const recipesError = (error) => ({
    type: RECIPES_ERROR,
    error
+});
+
+export const recipesReceived = (data) => ({
+   type: RECIPES_RECEIVED,
+   data
 });
 
 export const recipesUnload = () => ({
@@ -68,14 +68,14 @@ export const commentsListRequest = () => ({
    type: COMMENTS_LIST_REQUEST,
 });
 
-export const commentsListReceived = (data) => ({
-   type: COMMENTS_LIST_RECEIVED,
-   data
-});
-
 export const commentsListError = (error) => ({
    type: COMMENTS_LIST_ERROR,
    error
+});
+
+export const commentsListReceived = (data) => ({
+   type: COMMENTS_LIST_RECEIVED,
+   data
 });
 
 export const commentsListUnload = () => ({
