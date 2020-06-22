@@ -15,7 +15,8 @@ import {
    USER_LOGIN_SUCCESS,
    USER_PROFILE_REQUEST,
    USER_PROFILE_ERROR,
-   USER_PROFILE_RECEIVED
+   USER_PROFILE_RECEIVED,
+   USER_SET_ID
 } from './constants';
 import {SubmissionError} from 'redux-form';
 
@@ -113,6 +114,13 @@ export const userLoginAttempt = (username, password) => {
             _error: 'Username or password is invalid'
          })
       });
+   }
+};
+
+export const userSetId = (userId) => {
+   return {
+      type: USER_SET_ID,
+      userId
    }
 };
 
