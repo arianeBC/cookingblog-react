@@ -12,8 +12,12 @@ import {
    COMMENTS_LIST_ERROR, 
    COMMENTS_LIST_RECEIVED, 
    COMMENTS_LIST_UNLOAD,
-   USER_LOGIN_SUCCESS
+   USER_LOGIN_SUCCESS,
+   USER_PROFILE_REQUEST,
+   USER_PROFILE_ERROR,
+   USER_PROFILE_RECEIVED
 } from './constants';
+import {SubmissionError} from 'redux-form';
 
 export const recipesListRequest = () => ({
    type: RECIPES_LIST_REQUEST,
@@ -104,8 +108,40 @@ export const userLoginAttempt = (username, password) => {
    return (dispatch) => {
       return requests.post('/login_check', {username, password}, false)
          .then(response => dispatch(userLoginSuccess(response.token, response.id)))
-         .catch(error => {console.log('Login Failed');
+         .catch(error => {
+         throw new SubmissionError({
+            _error: 'Username or password is invalid'
+         })
       });
+   }
+};
+
+export const userProfileRequest = () => {
+   return {
+      type: USER_PROFILE_REQUEST
+   }
+};
+
+export const userProfileError = () => {
+   return {
+      type: USER_PROFILE_ERROR
+   }
+};
+
+export const userProfileReceived = (userId, userData) => {
+   return {
+      type: USER_PROFILE_RECEIVED,
+      userData,
+      userId
+   }
+};
+
+export const userProfileFetch = (userId) => {
+   return (dispatch) => {
+      dispatch(userProfileRequest());
+      return requests.get(`/users/${userId}`, true)
+         .then(response => dispatch(userProfileReceived(userId, response)))
+         .catch(error => dispatch(userProfileError()))
    }
 };
 

@@ -27,7 +27,6 @@ class RecipesList extends React.Component {
 
    render() {
       const {posts} = this.props;
-
       if (null === posts || 0 === posts.length) {
          return (<Message message="Aucune recette trouvé"/>);
       }
