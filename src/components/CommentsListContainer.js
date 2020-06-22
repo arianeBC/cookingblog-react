@@ -3,9 +3,11 @@ import {commentsListFetch, commentsListUnload} from '../actions/actions';
 import {connect} from 'react-redux';
 import {Spinner} from './Spinner';
 import {CommentsList} from './CommentsList';
+import CommentForm from './CommentForm';
 
 const mapStateToProps = state => ({
-   ...state.commentsList
+   ...state.commentsList,
+   isAuthenticated: state.auth.isAuthenticated
 });
 
 const mapDispatchToProps = {
@@ -23,13 +25,18 @@ class CommentsListContainer extends React.Component {
    }
 
    render() {
-      const {isFetching, commentsList} = this.props;
+      const {isFetching, commentsList, isAuthenticated} = this.props;
 
       if (isFetching) {
          return(<Spinner/>);
       }
 
-      return (<CommentsList commentsList={commentsList} />)
+      return (
+         <div>
+            <CommentsList commentsList={commentsList} />
+            {isAuthenticated && <CommentForm/>}
+         </div>
+      )
    }
 }
 
