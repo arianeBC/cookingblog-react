@@ -111,7 +111,12 @@ export const commentAdd = (comment, recipeId) => {
             content: comment,
             recipe: `api/recipes/${recipeId}`
          }
-      ).then(response => dispatch(commentAdded(response)))
+      ).then(response => dispatch(commentAdded(response))
+      ).catch(error => {
+         throw new SubmissionError({
+            content: 'This is an error'
+         })
+      })
    }
 };
 
