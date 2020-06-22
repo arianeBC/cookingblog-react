@@ -16,7 +16,8 @@ import {
    USER_PROFILE_REQUEST,
    USER_PROFILE_ERROR,
    USER_PROFILE_RECEIVED,
-   USER_SET_ID
+   USER_SET_ID,
+   COMMENT_ADDED
 } from './constants';
 import {SubmissionError} from 'redux-form';
 
@@ -97,6 +98,23 @@ export const commentsListFetch = (id) => {
    }
 };
 
+export const commentAdded = (comment) => ({
+   type: COMMENT_ADDED,
+   comment
+})
+
+export const commentAdd = (comment, recipeId) => {
+   return (dispatch) => {
+      return requests.post(
+         '/comments',
+         {
+            content: comment,
+            recipe: `api/recipes/${recipeId}`
+         }
+      ).then(response => dispatch(commentAdded(response)))
+   }
+};
+
 export const userLoginSuccess = (token, userId) => {
    return {
       type: USER_LOGIN_SUCCESS,
@@ -109,7 +127,7 @@ export const userLoginAttempt = (username, password) => {
    return (dispatch) => {
       return requests.post('/login_check', {username, password}, false)
          .then(response => dispatch(userLoginSuccess(response.token, response.id)))
-         .catch(error => {
+         .catch(() => {
          throw new SubmissionError({
             _error: 'Username or password is invalid'
          })

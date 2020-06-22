@@ -17,7 +17,7 @@ const mapDispatchToProps = {
 
 class CommentsListContainer extends React.Component {
    componentDidMount() {
-      this.props.commentsListFetch(this.props.recipesId);
+      this.props.commentsListFetch(this.props.recipeId);
    }
 
    componentWillUnmount() {
@@ -25,7 +25,7 @@ class CommentsListContainer extends React.Component {
    }
 
    render() {
-      const {isFetching, commentsList, isAuthenticated} = this.props;
+      const {isFetching, commentsList, isAuthenticated, recipeId} = this.props;
 
       if (isFetching) {
          return(<Spinner/>);
@@ -34,7 +34,7 @@ class CommentsListContainer extends React.Component {
       return (
          <div>
             <CommentsList commentsList={commentsList} />
-            {isAuthenticated && <CommentForm/>}
+            {isAuthenticated && <CommentForm recipeId={recipeId}/>}
          </div>
       )
    }

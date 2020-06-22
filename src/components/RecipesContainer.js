@@ -33,7 +33,7 @@ class RecipesContainer extends React.Component {
       return (
          <div>
             <Recipes post={post}/>
-            {post && <CommentsListContainer recipesId={this.props.match.params.id} />}
+            {post && <CommentsListContainer recipeId={this.props.match.params.id} />}
          </div>
       )
    }
