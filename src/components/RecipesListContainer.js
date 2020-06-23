@@ -15,19 +15,33 @@ const mapDispatchToProps = {
 
 class RecipesListContainer extends React.Component {
    componentDidMount() {
-      this.props.recipesListFetch();
+      this.props.recipesListFetch(this.getQueryParamPage());
    }
 
    componentDidUpdate(prevProps) {
-      const {currentPage, recipesListFetch} = this.props;
-      
+      const {currentPage, recipesListFetch, recipesListSetPage} = this.props;
+
+      if(prevProps.match.params.page !== this.getQueryParamPage()) {
+         recipesListSetPage(this.getQueryParamPage());
+      }
+
       if (prevProps.currentPage !== currentPage) {
          recipesListFetch(currentPage);
       }
    }
 
+   getQueryParamPage() {
+      return Number(this.props.match.params.page) || 1;
+   }
+
+   changePage(page) {
+      const {history, recipesListSetPage} = this.props;
+      recipesListSetPage(page);
+      history.push(`/${page}`);
+   }
+
    render() {
-      const {posts, isFetching, recipesListSetPage, currentPage} = this.props;
+      const {posts, isFetching, currentPage} = this.props;
 
       if (isFetching) {
          return(<Spinner/>);
@@ -36,7 +50,7 @@ class RecipesListContainer extends React.Component {
       return (
          <div>
             <RecipesList posts={posts} />
-            <Paginator currentPage={currentPage} pageCount={5} setPage={recipesListSetPage}/>
+            <Paginator currentPage={currentPage} pageCount={5} setPage={this.changePage.bind(this)}/>
          </div>
       )
    }

@@ -39,8 +39,6 @@ class App extends React.Component {
       const {userId, userData, userProfileFetch} = this.props;
 
       if (prevProps.userId !== userId && userId !== null && userData === null) {
-         console.log(`Old user ID: ${prevProps.userId}`);
-         console.log(`New user ID: ${userId}`);
          userProfileFetch(userId);
       }
    }
@@ -54,7 +52,7 @@ class App extends React.Component {
             <Switch>
                <Route path="/login" component={LoginForm}/>
                <Route path="/recipes/:id" component={RecipesContainer}/>
-               <Route path="/" component={RecipesListContainer}/>
+               <Route path="/:page?" component={RecipesListContainer}/>
             </Switch>
          </div>
       )
