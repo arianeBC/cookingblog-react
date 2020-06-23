@@ -4,13 +4,18 @@ import {Spinner} from './Spinner';
 
 export default class Header extends React.Component {
    renderUser() {
-      const {userData} = this.props;
+      const {userData, logout} = this.props;
 
       if (null === userData) {
-         return (<Spinner />);
+         return (<i className="fas fa-spinner fa-spin"/>);
       }
 
-      return (<span>Hello {userData.usergroup}</span>);
+      return (
+         <span>
+            Hello {userData.usergroup},&nbsp;
+            <button className="btn btn-link btn-sm" href="#" onClick={logout}>Logout</button>
+         </span>
+      );
    }
 
    render() {

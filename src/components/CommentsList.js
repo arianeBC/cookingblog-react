@@ -10,7 +10,7 @@ export class CommentsList extends React.Component {
       const {commentsList} = this.props;
 
       if (null === commentsList || 0 === commentsList.length) {
-         return (<Message message="Aucun commentaire pour l'instant : Soyez le premier à donner votre avis !"/>);
+         return (<Message message="Aucun commentaire"/>);
       }
 
       return (
