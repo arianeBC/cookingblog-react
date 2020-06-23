@@ -20,6 +20,7 @@ import {
    COMMENT_ADDED
 } from './constants';
 import {SubmissionError} from 'redux-form';
+import {parseApiErrors} from '../apiUtils';
 
 export const recipesListRequest = () => ({
    type: RECIPES_LIST_REQUEST,
@@ -113,9 +114,7 @@ export const commentAdd = (comment, recipeId) => {
          }
       ).then(response => dispatch(commentAdded(response))
       ).catch(error => {
-         throw new SubmissionError({
-            content: 'This is an error'
-         })
+         throw new SubmissionError(parseApiErrors(error));
       })
    }
 };
