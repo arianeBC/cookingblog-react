@@ -1,4 +1,5 @@
 import {RECIPES_LIST_REQUEST, RECIPES_LIST_RECEIVED, RECIPES_LIST_ERROR, RECIPES_LIST_ADD, RECIPES_LIST_SET_PAGE} from '../actions/constants';
+import {hydraPageCount} from '../apiUtils';
 
 export default(state = {
    posts: null,
@@ -17,6 +18,7 @@ export default(state = {
          state = {
             ...state,
             posts: action.data['hydra:member'],
+            pageCount: hydraPageCount(action.data),
             isFetching: false,
          };
          return state;
