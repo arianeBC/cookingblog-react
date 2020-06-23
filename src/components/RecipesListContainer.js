@@ -1,15 +1,16 @@
 import React from 'react';
 import RecipesList from './RecipesList';
-import {recipesListFetch} from '../actions/actions';
+import {recipesListFetch, recipesListSetPage} from '../actions/actions';
 import {connect} from 'react-redux';
 import {Spinner} from './Spinner';
+import {Paginator} from './Paginator';
 
 const mapStateToProps = state => ({
    ...state.recipesList
 });
 
 const mapDispatchToProps = {
-   recipesListFetch
+   recipesListFetch, recipesListSetPage
 };
 
 class RecipesListContainer extends React.Component {
@@ -17,14 +18,27 @@ class RecipesListContainer extends React.Component {
       this.props.recipesListFetch();
    }
 
+   componentDidUpdate(prevProps) {
+      const {currentPage, recipesListFetch} = this.props;
+      
+      if (prevProps.currentPage !== currentPage) {
+         recipesListFetch(currentPage);
+      }
+   }
+
    render() {
-      const {posts, isFetching} = this.props;
+      const {posts, isFetching, recipesListSetPage, currentPage} = this.props;
 
       if (isFetching) {
          return(<Spinner/>);
       }
 
-      return (<RecipesList posts={posts} />)
+      return (
+         <div>
+            <RecipesList posts={posts} />
+            <Paginator currentPage={currentPage} pageCount={5} setPage={recipesListSetPage}/>
+         </div>
+      )
    }
 }
 

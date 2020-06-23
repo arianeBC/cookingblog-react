@@ -3,6 +3,7 @@ import {
    RECIPES_LIST_REQUEST, 
    RECIPES_LIST_ERROR, 
    RECIPES_LIST_RECEIVED, 
+   RECIPES_LIST_SET_PAGE,
    RECIPES_LIST_ADD,
    RECIPES_REQUEST,
    RECIPES_ERROR,
@@ -37,10 +38,15 @@ export const recipesListReceived = (data) => ({
    data
 });
 
-export const recipesListFetch = () => {
+export const recipesListSetPage = (page) => ({
+   type: RECIPES_LIST_SET_PAGE,
+   page
+});
+
+export const recipesListFetch = (page = 1) => {
    return (dispatch) => {
       dispatch(recipesListRequest());
-      return requests.get('/recipes')
+      return requests.get(`/recipes?_page=${page}`)
          .then(response => dispatch(recipesListReceived(response)))
          .catch(error => dispatch(recipesListError(error)));
    }

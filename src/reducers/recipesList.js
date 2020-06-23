@@ -1,8 +1,10 @@
-import {RECIPES_LIST_REQUEST, RECIPES_LIST_RECEIVED, RECIPES_LIST_ERROR, RECIPES_LIST_ADD} from '../actions/constants';
+import {RECIPES_LIST_REQUEST, RECIPES_LIST_RECEIVED, RECIPES_LIST_ERROR, RECIPES_LIST_ADD, RECIPES_LIST_SET_PAGE} from '../actions/constants';
 
 export default(state = {
    posts: null,
-   isFetching: false
+   isFetching: false,
+   currentPage: 1,
+   pageCount: null
 }, action) => {
    switch (action.type) {
       case RECIPES_LIST_REQUEST:
@@ -30,6 +32,11 @@ export default(state = {
             posts: state.posts ? state.posts.concat(action.data) : state.posts
          };
          return state;
+      case RECIPES_LIST_SET_PAGE:
+         return {
+            ...state,
+            currentPage: action.page
+         };
       default:
          return state;
    }
