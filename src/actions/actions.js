@@ -23,6 +23,7 @@ import {
 } from './constants';
 import {SubmissionError} from 'redux-form';
 import {parseApiErrors} from '../apiUtils';
+import request from 'superagent';
 
 export const recipesListRequest = () => ({
    type: RECIPES_LIST_REQUEST,
@@ -154,6 +155,15 @@ export const userLogout = () => {
       type: USER_LOGOUT
    }
 }
+
+export const userRegister = (username, password, retypedPassword, email, usergroup) => {
+   return (dispatch) => {
+      return requests.post('/users', {username, password, retypedPassword, email, usergroup}, false)
+         .catch(error => {
+            throw new SubmissionError(parseApiErrors(error));
+      });
+   }
+};
 
 export const userSetId = (userId) => {
    return {
