@@ -1,10 +1,19 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {renderField} from '../form';
+import {connect} from 'react-redux';
+import {userConfirm} from '../actions/actions';
+
+const mapDispatchToProps = {
+   userConfirm
+};
 
 class ConfirmationForm extends React.Component {
    onSubmit(values) {
-      
+      return this.props.userConfirm(values.confirmationToken)
+         .then(() => {
+            this.props.reset();
+         });
    }
 
    render() {
@@ -17,12 +26,12 @@ class ConfirmationForm extends React.Component {
                Veuillez entrer le code que vous avez reçu par email
             </p>
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-               <Field name="username" label="Nom d'utilisateur :" 
+               <Field name="confirmationToken" label="Code de confirmation : " 
                      type="text" component={renderField}/>
 
                <button type="submit" className="btn btn-primary btn-big btn-block" 
                      disabled={submitting}>
-                  Confirmer votre email
+                  Confirmer
                </button>
             </form>
          </div>
@@ -33,4 +42,4 @@ class ConfirmationForm extends React.Component {
 
 export default reduxForm({
    form: 'ConfirmationForm'
-})(ConfirmationForm);
+})(connect(null, mapDispatchToProps)(ConfirmationForm));

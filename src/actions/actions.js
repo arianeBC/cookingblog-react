@@ -13,14 +13,16 @@ import {
    COMMENTS_LIST_ERROR, 
    COMMENTS_LIST_RECEIVED, 
    COMMENTS_LIST_UNLOAD,
+   COMMENT_ADDED,
    USER_LOGIN_SUCCESS,
+   USER_SET_ID,
    USER_PROFILE_REQUEST,
    USER_PROFILE_ERROR,
    USER_PROFILE_RECEIVED,
    USER_LOGOUT,
    USER_REGISTER_SUCCESS,
-   USER_SET_ID,
-   COMMENT_ADDED
+   USER_CONFIRMATION_SUCCESS,
+   USER_REGISTRATION_COMPLETE
 } from './constants';
 import {SubmissionError} from 'redux-form';
 import {parseApiErrors} from '../apiUtils';
@@ -169,6 +171,30 @@ export const userRegister = (username, password, retypedPassword, email, usergro
          .then(() => dispatch(userRegisterSucces()))
          .catch(error => {
             throw new SubmissionError(parseApiErrors(error));
+      });
+   }
+};
+
+export const userConfirmationSuccess = () => {
+   return {
+      type: USER_CONFIRMATION_SUCCESS
+   }
+};
+
+export const userRegistrationComplete = () => {
+   return {
+      type: USER_REGISTRATION_COMPLETE
+   }
+};
+
+export const userConfirm = (confirmationToken) => {
+   return (dispatch) => {
+      return requests.post('/users/confirm', {confirmationToken}, false)
+         .then(() => dispatch(userConfirmationSuccess()))
+         .catch(error => {
+            throw new SubmissionError({
+               _error: 'Le code de validation est incorrect'
+            });
       });
    }
 };
