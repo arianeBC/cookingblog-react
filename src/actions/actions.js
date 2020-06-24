@@ -18,6 +18,7 @@ import {
    USER_PROFILE_ERROR,
    USER_PROFILE_RECEIVED,
    USER_LOGOUT,
+   USER_REGISTER_SUCCESS,
    USER_SET_ID,
    COMMENT_ADDED
 } from './constants';
@@ -156,9 +157,16 @@ export const userLogout = () => {
    }
 }
 
+export const userRegisterSucces = () => {
+   return {
+      type: USER_REGISTER_SUCCESS
+   }
+};
+
 export const userRegister = (username, password, retypedPassword, email, usergroup) => {
    return (dispatch) => {
       return requests.post('/users', {username, password, retypedPassword, email, usergroup}, false)
+         .then(() => dispatch(userRegisterSucces()))
          .catch(error => {
             throw new SubmissionError(parseApiErrors(error));
       });
