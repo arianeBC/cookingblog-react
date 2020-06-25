@@ -12,8 +12,8 @@ export default class Header extends React.Component {
 
       return (
          <span>
-            Hello {userData.usergroup},&nbsp;
-            <button className="btn btn-link btn-sm" href="#" onClick={logout}>Logout</button>
+            {userData.usergroup}&nbsp;
+            <button className="btn btn-link btn-sm" href="#" onClick={logout}>Déconnexion</button>
          </span>
       );
    }
@@ -24,7 +24,7 @@ export default class Header extends React.Component {
       return (
          <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link to="/" className="navbar-brand">
-               React Blog
+               Cuisine SG
             </Link>
 
             <ul className="navbar-nav mr-auto">
@@ -33,6 +33,14 @@ export default class Header extends React.Component {
                   (
                      <li className="nav-item">
                         <Link to="/register" className="nav-link">S'inscrire</Link>
+                     </li>
+                  )
+               }
+               {
+                  isAuthenticated &&
+                  (
+                     <li className="nav-item">
+                        <Link to="/recipes-form" className="nav-link">Ajouter</Link>
                      </li>
                   )
                }

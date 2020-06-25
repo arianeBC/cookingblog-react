@@ -83,6 +83,31 @@ export const recipesFetch = (id) => {
    }
 };
 
+export const recipeAdd = (category, theme, title, ingredients, content) => {
+   return (dispatch) => {
+      return requests.post(
+         '/recipes',
+         {
+            category,
+            theme,
+            title,
+            ingredients,
+            content,
+            slug: title && title.replace(/ /g, "-").toLowerCase()
+         }
+      ).catch(error => {
+         if (401 === error.response.status) {
+            return dispatch(userLogout());
+         } else if (403 === error.response.status) {
+            throw new SubmissionError({
+               _error: "Vous n'avez pas les droits pour publier une nouvelle recette"
+            });
+         }
+         throw new SubmissionError(parseApiErrors(error));
+      })
+   }
+};
+
 export const commentsListRequest = () => ({
    type: COMMENTS_LIST_REQUEST,
 });
@@ -235,12 +260,4 @@ export const userProfileFetch = (userId) => {
          .catch(error => dispatch(userProfileError(userId)))
    }
 };
-
-export const recipesAdd = () => ({
-   type: RECIPES_LIST_ADD,
-   data: {
-      id: Math.floor(Math.random() * 100 + 3),
-      title: 'A newly added recipe'
-   }
-});
 
