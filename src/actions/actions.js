@@ -4,7 +4,6 @@ import {
    RECIPES_LIST_ERROR, 
    RECIPES_LIST_RECEIVED, 
    RECIPES_LIST_SET_PAGE,
-   RECIPES_LIST_ADD,
    RECIPES_REQUEST,
    RECIPES_ERROR,
    RECIPES_RECEIVED,
@@ -14,6 +13,11 @@ import {
    COMMENTS_LIST_RECEIVED, 
    COMMENTS_LIST_UNLOAD,
    COMMENT_ADDED,
+   IMAGE_UPLOADED,
+   IMAGE_UPLOAD_REQUEST,
+   IMAGE_UPLOAD_ERROR,
+   IMAGE_DELETED,
+   IMAGE_DELETE_REQUEST,
    USER_LOGIN_SUCCESS,
    USER_SET_ID,
    USER_PROFILE_REQUEST,
@@ -26,7 +30,6 @@ import {
 } from './constants';
 import {SubmissionError} from 'redux-form';
 import {parseApiErrors} from '../apiUtils';
-import request from 'superagent';
 
 export const recipesListRequest = () => ({
    type: RECIPES_LIST_REQUEST,
@@ -261,3 +264,30 @@ export const userProfileFetch = (userId) => {
    }
 };
 
+export const imageUploaded = (data) => {
+   return {
+      type: IMAGE_UPLOADED,
+      image: data
+   }
+};
+
+export const imageUploadRequest = () => {
+   return {
+      type: IMAGE_UPLOAD_REQUEST,
+   }
+};
+
+export const imageUploadError = () => {
+   return {
+      type: IMAGE_UPLOAD_ERROR,
+   }
+};
+
+export const imageUpload = (file) => {
+   return (dispatch) => {
+      dispatch(imageUploadRequest());
+      return requests.upload('/images', file)
+      .then(response => dispatch(imageUploaded(response)))
+      .catch(() => dispatch(imageUploadError))
+   }
+};

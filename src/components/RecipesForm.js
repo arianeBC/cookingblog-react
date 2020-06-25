@@ -5,10 +5,10 @@ import {canWritePost} from '../apiUtils';
 import {Redirect} from 'react-router';
 import {renderField} from '../form';
 import {recipeAdd} from '../actions/actions';
-import {ImageUpload} from './ImageUpload';
+import ImageUpload from './ImageUpload';
 
 const mapDispatchToProps = {
-   recipeAdd,
+   recipeAdd
 };
 
 const mapStateToProps = state => ({
@@ -32,7 +32,6 @@ class RecipesForm extends React.Component {
       }
 
       const {submitting, handleSubmit, error} = this.props;
-      console.log(this.props);
 
       return (
          <div className="card mt-3 mb-6 shadow-sm">
@@ -43,16 +42,9 @@ class RecipesForm extends React.Component {
                   <Field name="ingredients" label="Ingrédients" type="textarea" component={renderField}/>
                   <Field name="content" label="Préparation" type="textarea" component={renderField} />
                   <Field name="category" label="Catégorie" type="hidden" component={renderField}/>
-                  {/* <Field 
-                     name="category" 
-                     label="Catégorie" 
-                     type="drop-list" 
-                     values={props.list.shuffle.values}
-                     defaultValue={props.list.shuffle.default} 
-                     component={renderField}
-                  /> */}
                   <Field name="theme" label="Thème" type="text" component={renderField}/>
-                  <ImageUpload name="image" label="Image" type="text" component={renderField}/>
+
+                  <ImageUpload />
 
                   <button type="submit" className="btn btn-primary btn-bit btn-block"
                            disabled={submitting}>
