@@ -4,26 +4,33 @@ import {connect} from 'react-redux';
 import {canWritePost} from '../apiUtils';
 import {Redirect} from 'react-router';
 import {renderField} from '../form';
-import {recipeAdd} from '../actions/actions';
+import {recipeAdd, recipesFormUnload} from '../actions/actions';
 import ImageUpload from './ImageUpload';
+import {ImageBrowser} from './ImageBrowser';
 
 const mapDispatchToProps = {
-   recipeAdd
+   recipeAdd,
+   recipesFormUnload
 };
 
 const mapStateToProps = state => ({
-   userData: state.auth.userData
+   userData: state.auth.userData,
+   ...state.recipesForm
 });
 
 class RecipesForm extends React.Component {
    onSubmit(values) {
-      const {recipeAdd, reset, history} = this.props;
+      const {recipeAdd, reset, history, images} = this.props;
 
-      return recipeAdd(values.category, values.theme, values.title, values.ingredients, values.content)
+      return recipeAdd(values.category, values.theme, values.title, values.ingredients, values.content, images)
          .then(() => {
             reset();
             history.push('/');
          });
+   }
+
+   componentWillUnmount() {
+      this.props.recipesFormUnload();
    }
 
    render () {
@@ -31,7 +38,7 @@ class RecipesForm extends React.Component {
          return <Redirect to="/login" />
       }
 
-      const {submitting, handleSubmit, error} = this.props;
+      const {submitting, handleSubmit, error, images, imageUploading} = this.props;
 
       return (
          <div className="card mt-3 mb-6 shadow-sm">
@@ -45,9 +52,10 @@ class RecipesForm extends React.Component {
                   <Field name="theme" label="Thème" type="text" component={renderField}/>
 
                   <ImageUpload />
+                  <ImageBrowser images={images}/>
 
                   <button type="submit" className="btn btn-primary btn-bit btn-block"
-                           disabled={submitting}>
+                           disabled={submitting || imageUploading}>
                      Publier
                   </button>
                </form>

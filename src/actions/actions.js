@@ -8,6 +8,7 @@ import {
    RECIPES_ERROR,
    RECIPES_RECEIVED,
    RECIPES_UNLOAD,
+   RECIPES_FORM_UNLOAD,
    COMMENTS_LIST_REQUEST, 
    COMMENTS_LIST_ERROR, 
    COMMENTS_LIST_RECEIVED, 
@@ -86,7 +87,7 @@ export const recipesFetch = (id) => {
    }
 };
 
-export const recipeAdd = (category, theme, title, ingredients, content) => {
+export const recipeAdd = (category, theme, title, ingredients, content, image = []) => {
    return (dispatch) => {
       return requests.post(
          '/recipes',
@@ -96,7 +97,8 @@ export const recipeAdd = (category, theme, title, ingredients, content) => {
             title,
             ingredients,
             content,
-            slug: title && title.replace(/ /g, "-").toLowerCase()
+            slug: title && title.replace(/ /g, "-").toLowerCase(),
+            image: image.map(images => `/api/images/${images.id}`)
          }
       ).catch(error => {
          if (401 === error.response.status) {
@@ -110,6 +112,10 @@ export const recipeAdd = (category, theme, title, ingredients, content) => {
       })
    }
 };
+
+export const recipesFormUnload = () => ({
+   type: RECIPES_FORM_UNLOAD
+});
 
 export const commentsListRequest = () => ({
    type: COMMENTS_LIST_REQUEST,
