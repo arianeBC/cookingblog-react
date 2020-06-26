@@ -297,3 +297,24 @@ export const imageUpload = (file) => {
       .catch(() => dispatch(imageUploadError))
    }
 };
+
+export const imageDeleteRequest = () => {
+   return {
+      type: IMAGE_DELETE_REQUEST,
+   }
+};
+
+export const imageDelete = (id) => {
+   return (dispatch) => {
+      dispatch(imageDeleteRequest());
+      return requests.delete(`/images/${id}`)
+         .then(() => dispatch(imagedeleted(id)));
+   }
+};
+
+export const imagedeleted = (id) => {
+   return {
+      type: IMAGE_DELETED,
+      imageId: id
+   }
+};

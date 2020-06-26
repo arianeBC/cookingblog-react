@@ -4,13 +4,14 @@ import {connect} from 'react-redux';
 import {canWritePost} from '../apiUtils';
 import {Redirect} from 'react-router';
 import {renderField} from '../form';
-import {recipeAdd, recipesFormUnload} from '../actions/actions';
+import {recipeAdd, recipesFormUnload, imageDelete} from '../actions/actions';
 import ImageUpload from './ImageUpload';
 import {ImageBrowser} from './ImageBrowser';
 
 const mapDispatchToProps = {
    recipeAdd,
-   recipesFormUnload
+   recipesFormUnload,
+   imageDelete
 };
 
 const mapStateToProps = state => ({
@@ -38,7 +39,7 @@ class RecipesForm extends React.Component {
          return <Redirect to="/login" />
       }
 
-      const {submitting, handleSubmit, error, images, imageUploading} = this.props;
+      const {submitting, handleSubmit, error, images, imageReqInProgress, imageDelete} = this.props;
 
       return (
          <div className="card mt-3 mb-6 shadow-sm">
@@ -52,10 +53,12 @@ class RecipesForm extends React.Component {
                   <Field name="theme" label="Thème" type="text" component={renderField}/>
 
                   <ImageUpload />
-                  <ImageBrowser images={images}/>
+                  <ImageBrowser images={images} 
+                                 deleteHandler={imageDelete}
+                                 isLocked={imageReqInProgress}/>
 
                   <button type="submit" className="btn btn-primary btn-bit btn-block"
-                           disabled={submitting || imageUploading}>
+                           disabled={submitting || imageReqInProgress}>
                      Publier
                   </button>
                </form>
