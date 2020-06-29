@@ -1,0 +1,27 @@
+nav.full-width {
+   font-family: 'Work Sans', sans-serif;
+   font-size: .8rem;
+   line-height: 2rem;
+   letter-spacing: .1rem;
+   width: 100%;
+   background-color: #f8f4f3;
+   text-transform: uppercase;
+   text-decoration: none solid rgb(151, 151, 151);
+}
+
+nav .logo {
+   font-size: 1rem;
+   letter-spacing: .15rem;
+}
+
+span.separator {
+   padding: 0 .8rem;
+}
+
+span.strong {
+   font-family: 'Reenie Beanie', serif;
+   /* font-family: 'Permanent Marker', serif; */
+   /* font-family: 'Pacifico', serif;  */
+   text-transform: capitalize;
+   font-size: 1.6rem;
+}

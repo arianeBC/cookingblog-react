@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Spinner} from './Spinner';
+import './Header.css';
 
 export default class Header extends React.Component {
    renderUser() {
@@ -22,34 +23,41 @@ export default class Header extends React.Component {
       const {isAuthenticated} = this.props;
 
       return (
-         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to="/" className="navbar-brand">
-               Cuisine SG
-            </Link>
+         <header>
+            <div className="row">
+               <nav className="navbar navbar-expand-md navbar-light full-width">
+                  <Link to="/" className="navbar-brand logo">
+                     Cuisine <span className="strong">Sans gluten</span>
+                  </Link>
 
-            <ul className="navbar-nav mr-auto">
-               {
-                  !isAuthenticated && 
-                  (
-                     <li className="nav-item">
-                        <Link to="/register" className="nav-link">S'inscrire</Link>
-                     </li>
-                  )
-               }
-               {
-                  isAuthenticated &&
-                  (
-                     <li className="nav-item">
-                        <Link to="/recipes-form" className="nav-link">Ajouter</Link>
-                     </li>
-                  )
-               }
-            </ul>
 
-            <span className="navbar-text">
-               {isAuthenticated ? this.renderUser() : <Link to="/login">Connexion</Link>}
-            </span>
-         </nav>
+                     <ul className="navbar-nav ml-auto">
+                        {
+                           !isAuthenticated && 
+                           (
+                              <li className="nav-item">
+                                 <Link to="/register" className="nav-link">S'inscrire</Link>
+                              </li>
+                           )
+                        }
+                        {
+                           isAuthenticated &&
+                           (
+                              <li className="nav-item">
+                                 <Link to="/recipes-form" className="nav-link">Ajouter</Link>
+                              </li>
+                           )
+                        }
+                     </ul>
+
+                     <span className="navbar-text separator">|</span>
+                     <span className="navbar-text">
+                        {isAuthenticated ? this.renderUser() : <Link to="/login">Mon espace <i class="far fa-user"></i></Link>}
+                     </span>
+
+               </nav>
+            </div>
+         </header>
       );
    }
 }
