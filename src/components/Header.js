@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Spinner} from './Spinner';
 import './Header.css';
 
 export default class Header extends React.Component {
@@ -13,8 +12,8 @@ export default class Header extends React.Component {
 
       return (
          <span>
-            {userData.usergroup}&nbsp;
-            <button className="btn btn-link btn-sm" href="#" onClick={logout}>Déconnexion</button>
+            {userData.usergroup}&nbsp; |
+            <button className="navbar-text btn btn-link btn-sm navbar-styling" href="#" onClick={logout}>Déconnexion</button>
          </span>
       );
    }
@@ -25,7 +24,7 @@ export default class Header extends React.Component {
       return (
          <header>
             <div className="row">
-               <nav className="navbar navbar-expand-md navbar-light full-width">
+               <nav className="navbar fixed-top navbar-expand-md navbar-light full-width">
                   <Link to="/" className="navbar-brand logo">
                      Cuisine <span className="strong">Sans gluten</span>
                   </Link>
@@ -52,7 +51,7 @@ export default class Header extends React.Component {
 
                      <span className="navbar-text separator">|</span>
                      <span className="navbar-text">
-                        {isAuthenticated ? this.renderUser() : <Link to="/login">Mon espace <i class="far fa-user"></i></Link>}
+                        {isAuthenticated ? this.renderUser() : <Link to="/login">Mon espace <i className="far fa-user"></i></Link>}
                      </span>
 
                </nav>

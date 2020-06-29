@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import './Paginator.css';
 
 export class Paginator extends React.Component {
    constructor(props) {
@@ -17,11 +18,11 @@ export class Paginator extends React.Component {
       const {currentPage, setPage, prevPage, nextPage} = this.props;
 
       return (
-         <nav>
-            <ul className="pagination">
+         <nav className="pt-5">
+            <ul className="pagination pagin d-flex justify-content-center">
                <li className="page-item">
-                  <button className="page-link" onClick={prevPage}>
-                     Précédent
+                  <button className="page-link pagin-text" onClick={prevPage}>
+                     &lt;
                   </button>
                </li>
 
@@ -33,7 +34,7 @@ export class Paginator extends React.Component {
 
                      return (
                         <li key={page} className={classNames("page-item", {active: currentPage === page})}>
-                           <button className="page-link" onClick={onClick}>
+                           <button className="page-link pagin-text" onClick={onClick}>
                               {page}
                            </button>
                         </li>
@@ -42,8 +43,8 @@ export class Paginator extends React.Component {
                }
 
                <li className="page-item">
-                  <button className="page-link" onClick={nextPage}>
-                     Suivant
+                  <button className="page-link pagin-text" onClick={nextPage}>
+                     &gt;
                   </button>
                </li>
             </ul>

@@ -1,0 +1,46 @@
+h3.recipe-title,
+h3.recipe-title a {
+   font-family: 'Abhaya Libre', sans-serif;
+   font-weight: 600;
+   font-size: .8rem;
+   line-height: 1.2rem;
+   letter-spacing: .1rem;
+   color: #272727!important;
+   text-transform: uppercase;
+   text-align: center;
+}
+
+a:hover,
+a:active {
+   color: #272727!important;
+   text-decoration: none!important;
+}
+
+div.card-styling {
+   background-color: #F2F2F2;
+   border: none;
+   border-radius: 0;
+}
+
+div.card-styling:hover{
+   filter: brightness(90%);
+   transition: 1s;
+}
+
+.card-body .card-text {
+   font-family: 'Work Sans', sans-serif;
+   font-size: .8rem;
+   text-transform: uppercase;
+}
+
+
+
+@media (min-width: 993px) {
+   .responsive-card{
+      padding: 0 16vw;
+   }
+
+   div.add-padding {
+      padding: 0 1.2rem;
+   }
+}
