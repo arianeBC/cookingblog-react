@@ -27,7 +27,7 @@ timeago.register('fr', timeago_fr);
 class RecipesList extends React.Component {
 
    render() {
-      const {posts, images} = this.props;
+      const {posts} = this.props;
       if (null === posts || 0 === posts.length) {
          return (<Message message="Aucune recette trouvé"/>);
       }

@@ -1,0 +1,9 @@
+.comments {
+   font-family: 'Work Sans', sans-serif;
+   font-size: .8rem;
+   line-height: 1.2rem;
+   text-transform: uppercase;
+   border: solid 1px #979797;
+   padding: 1.2rem;
+   text-align: center;
+}

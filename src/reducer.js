@@ -2,6 +2,7 @@ import {combineReducers} from 'redux';
 import recipesList from './reducers/recipesList';
 import recipes from './reducers/recipes';
 import commentsList from './reducers/commentsList';
+import imagesList from './reducers/imagesList';
 import {reducer as formReducer} from 'redux-form';
 import auth from './reducers/auth';
 import registration from './reducers/registration';
@@ -12,6 +13,7 @@ export default combineReducers({
    recipesList,
    recipes,
    commentsList,
+   imagesList,
    auth,
    registration,
    recipesForm,

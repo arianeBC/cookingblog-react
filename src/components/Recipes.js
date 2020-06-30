@@ -1,6 +1,5 @@
 import React from 'react';
 import {Message} from './Message';
-
 import './Recipes.css';
 
 export class Recipes extends React.Component {
@@ -12,18 +11,15 @@ export class Recipes extends React.Component {
       }
 
       return (
-         <div className="card mb-3 mt-3 shadow-sm">
+         <div className="container">
             <div className="card-body">
                <h2>{post.title}</h2>
+               <p className="card-text border-top"></p>
                <p><strong>Ingrédients</strong></p>
                <p className="card-text listing">{post.ingredients && post.ingredients.split("<br>").join("\n")}</p>
                <p><strong>Préparation</strong></p>
                <p className="card-text listing">{post.content.split("<br>").join("\n")}</p>
-               <p className="card-text border-top">
-                  <small className="text-muted">
-                     coucou
-                  </small>
-               </p>
+               <p className="card-text border-top"></p>
             </div>
          </div>
       )

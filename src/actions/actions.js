@@ -27,7 +27,11 @@ import {
    USER_LOGOUT,
    USER_REGISTER_SUCCESS,
    USER_CONFIRMATION_SUCCESS,
-   USER_REGISTRATION_COMPLETE
+   USER_REGISTRATION_COMPLETE,
+   IMAGES_LIST_REQUEST,
+   IMAGES_LIST_ERROR,
+   IMAGES_LIST_RECEIVED,
+   IMAGES_LIST_UNLOAD
 } from './constants';
 import {SubmissionError} from 'redux-form';
 import {parseApiErrors} from '../apiUtils';
@@ -316,5 +320,32 @@ export const imagedeleted = (id) => {
    return {
       type: IMAGE_DELETED,
       imageId: id
+   }
+};
+
+export const imagesListRequest = () => ({
+   type: IMAGES_LIST_REQUEST,
+});
+
+export const imagesListError = (error) => ({
+   type: IMAGES_LIST_ERROR,
+   error
+});
+
+export const imagesListReceived = (data) => ({
+   type: IMAGES_LIST_RECEIVED,
+   data
+});
+
+export const imagesListUnload = () => ({
+   type: IMAGES_LIST_UNLOAD
+});
+
+export const imagesListFetch = (id) => {
+   return (dispatch) => {
+      dispatch(imagesListRequest());
+      return requests.get(`/recipes/${id}/images`)
+         .then(response => dispatch(imagesListReceived(response)))
+         .catch(error => dispatch(imagesListError(error)));
    }
 };

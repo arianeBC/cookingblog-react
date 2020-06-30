@@ -1,0 +1,33 @@
+.recipe-and-img-container {
+   min-height: 100vh;
+}
+
+.recipe-img {
+   display: block;
+   max-width: 718px;
+   max-height: 1024px;
+   width: auto;
+   height: auto;
+   margin: 6rem auto;
+}
+
+.recipe-text {
+   background-color: #fff9f5;
+   padding: 6rem 3rem;
+   overflow: hidden;
+}
+
+.recipe-comments {
+   background-color: #f8f4f3;
+   margin-top: 3rem;
+   margin-bottom: 3rem;
+   padding: 3rem;
+}
+
+
+@media (max-width: 576px) {
+   .recipe-comments {
+      margin-top: 0rem;
+      margin-bottom: 0rem;
+   }
+}

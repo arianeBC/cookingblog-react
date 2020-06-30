@@ -10,11 +10,11 @@ export class CommentsList extends React.Component {
       const {commentsList} = this.props;
 
       if (null === commentsList || 0 === commentsList.length) {
-         return (<Message message="Aucun commentaire"/>);
+         return (<Message message="Aucun commentaire n'a encore été ajouté"/>);
       }
 
       return (
-         <div className="card mb-3 mt-3 shadow-sm">
+         <div className="comments-container">
             <TransitionGroup>
             {commentsList.map(comment => {
                return (

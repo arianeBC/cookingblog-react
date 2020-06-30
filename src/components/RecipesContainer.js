@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {Recipes} from './Recipes';
 import {Spinner} from './Spinner';
 import CommentsListContainer from './CommentsListContainer';
+import ImagesListContainer from './ImagesListContainer';
+import './RecipesContainer.css';
 
 const mapeStateToProps = state => ({
    ...state.recipes
@@ -31,9 +33,24 @@ class RecipesContainer extends React.Component {
       }
 
       return (
-         <div>
-            <Recipes post={post}/>
-            {post && <CommentsListContainer recipeId={this.props.match.params.id} />}
+         <div className="recipe-container">
+
+            <div className="row recipe-and-img-container">
+               <div className="col-md-6 col-sm-12 img-container">
+                  <div className="recipe-img">
+                     <ImagesListContainer recipeId={this.props.match.params.id} />
+                  </div>
+               </div>
+               <div className="col-md-6 col-sm-12 recipe-text">
+                  <Recipes post={post}/>
+               </div>
+            </div>
+
+            <div className="row">
+               <div className="offset-md-2 col-md-8 col-sm-12 recipe-comments">
+                  {post && <CommentsListContainer recipeId={this.props.match.params.id} />}
+               </div>
+            </div>
          </div>
       )
    }

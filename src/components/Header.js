@@ -25,8 +25,8 @@ export default class Header extends React.Component {
          <header>
             <div className="row">
                <nav className="navbar fixed-top navbar-expand-md navbar-light full-width">
-                  <Link to="/" className="navbar-brand logo">
-                     Cuisine <span className="strong">Sans gluten</span>
+                  <Link to="/" className="navbar-brand">
+                     <span className="subject">Cuisine </span><span className="logo">Sans gluten</span>
                   </Link>
 
 

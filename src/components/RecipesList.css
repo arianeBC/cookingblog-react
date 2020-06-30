@@ -33,8 +33,6 @@ div.card-styling:hover{
    text-transform: uppercase;
 }
 
-
-
 @media (min-width: 993px) {
    .responsive-card{
       padding: 0 16vw;

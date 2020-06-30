@@ -1,4 +1,4 @@
-nav.full-width {
+.full-width {
    font-family: 'Work Sans', sans-serif;
    font-size: .8rem;
    line-height: 2rem;
@@ -9,7 +9,7 @@ nav.full-width {
    text-decoration: none solid rgb(151, 151, 151);
 }
 
-nav .logo {
+.navbar-brand {
    font-size: 1rem;
    letter-spacing: .15rem;
 }
@@ -18,10 +18,8 @@ span.separator {
    padding: 0 .8rem;
 }
 
-span.strong {
+span.logo {
    font-family: 'Reenie Beanie', serif;
-   /* font-family: 'Permanent Marker', serif; */
-   /* font-family: 'Pacifico', serif;  */
    text-transform: capitalize;
    font-size: 1.6rem;
 }
@@ -33,4 +31,10 @@ span.strong {
    font-weight: 600;
    vertical-align: baseline;
    text-decoration: none solid rgb(151, 151, 151);
+}
+
+@media (max-width: 576px) {
+   .subject {
+      display: none;
+   }
 }
