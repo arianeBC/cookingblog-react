@@ -3,8 +3,9 @@ import timeago from 'timeago.js';
 import {Link} from 'react-router-dom';
 import {Message} from './Message';
 import './RecipesList.css';
+import { recipeAdd } from '../actions/actions';
 
-var timeago_fr = function(number, index, total_sec) {
+const timeago_fr = function(number, index, total_sec) {
    return [
       ["à l'instant", 'dans un instant'],
       ['il y a %s secondes', 'dans %s secondes'],
@@ -39,6 +40,8 @@ class RecipesList extends React.Component {
                   <div className="col-md-6 col-lg-3 add-padding" key={post.id}>
                      <Link to={`/recipes/${post.id}`}>
                         <div className="card mb-3 mt-3 card-styling" >
+                        <img src="http://sgcuisine/images/5efbe9a4a1404818118677.jpg" alt="" className="img-recipe-list"/>
+                        {/* <img src={post.image.url} alt="" className="img-recipe-list"/> */}
                            <div className="card-body">
                               <h3 className="recipe-title">
                                  {post.title}

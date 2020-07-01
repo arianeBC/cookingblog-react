@@ -142,7 +142,9 @@ export const commentsListUnload = () => ({
 export const commentsListFetch = (id, page = 1) => {
    return (dispatch) => {
       dispatch(commentsListRequest());
-      return requests.get(`/recipes/${id}/comments?_page=${page}`)
+      // return requests.get(`/recipes/${id}/comments?_page=${page}`)
+      return requests.get(`/comments?recipe=/api/recipes/${id}?_page=${page}`)
+      // return requests.get(`/comments?recipe=${id}?_page=${page}`)
          .then(response => dispatch(commentsListReceived(response)))
          .catch(error => dispatch(commentsListError(error)));
    }

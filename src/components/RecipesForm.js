@@ -42,26 +42,29 @@ class RecipesForm extends React.Component {
       const {submitting, handleSubmit, error, images, imageReqInProgress, imageDelete} = this.props;
 
       return (
-         <div className="card mt-3 mb-6 shadow-sm">
-            <div className="card-body">
+         <div className="row register-background">
+            <div className="col-md-6 mx-auto">
+            <h3 className="pt-5 form-name">Ajouter une recette</h3>
+               <div className="card card-body mt-5 body-form">
                {error && <div className="alert alert-danger">{error}</div>}
-               <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                  <Field name="title" label="Titre" type="text" component={renderField}/>
-                  <Field name="ingredients" label="Ingrédients" type="textarea" component={renderField}/>
-                  <Field name="content" label="Préparation" type="textarea" component={renderField} />
-                  <Field name="category" label="Catégorie" type="hidden" component={renderField}/>
-                  <Field name="theme" label="Thème" type="text" component={renderField}/>
+                  <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                     <Field name="title" label="Titre" type="text" component={renderField}/>
+                     <Field name="ingredients" label="Ingrédients" type="textarea" component={renderField}/>
+                     <Field name="content" label="Préparation" type="textarea" component={renderField} />
+                     <Field name="category" label="Catégorie" type="hidden" component={renderField}/>
+                     <Field name="theme" label="Thème" type="text" component={renderField}/>
 
-                  <ImageUpload />
-                  <ImageBrowser images={images} 
-                                 deleteHandler={imageDelete}
-                                 isLocked={imageReqInProgress}/>
+                     <ImageUpload />
+                     <ImageBrowser images={images} 
+                                    deleteHandler={imageDelete}
+                                    isLocked={imageReqInProgress}/>
 
-                  <button type="submit" className="btn btn-primary btn-bit btn-block"
-                           disabled={submitting || imageReqInProgress}>
-                     Publier
-                  </button>
-               </form>
+                     <button type="submit" className="btn btn-primary btn-block btn-login"
+                              disabled={submitting || imageReqInProgress}>
+                        Publier
+                     </button>
+                  </form>
+               </div>
             </div>
          </div>
       )

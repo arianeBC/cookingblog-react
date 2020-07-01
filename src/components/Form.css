@@ -1,0 +1,111 @@
+.row.register-background {
+   background-color: #fff9f5;
+   height: 100vh;
+}
+
+h3.form-name{
+   font-family: 'Reenie Beanie', serif;
+   text-transform: capitalize;
+   font-size: 2.4rem;
+   text-align: center;
+   margin-top: 1rem;
+}
+
+button.btn-form {
+   background-color: #c7a38f;
+}
+
+form {
+   font-family: 'Work Sans', sans-serif;
+   font-size: .9rem;
+}
+
+.form-control {
+   background-color: #fbfbfb;
+   border-radius: 0;
+   box-shadow: inset 0 1px 4px#ede9e8;
+}
+
+.card-body.body-form {
+   border-radius: 0;
+   border: none;
+   padding: 2rem;
+}
+
+.card-body.body-form.body-comment {
+   padding-left: 0;
+   padding-right: 0;
+}
+
+ /* custom checkbox  */
+.custom-control-label:before {
+   background-color: #efdacd;
+   border-radius: 0;
+   box-shadow: inset 0 1px 4px#ede9e8;
+   border: none;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before{
+   background-color: #c7a38f;
+   border: black;
+}
+.custom-checkbox .custom-control-input:checked~.custom-control-label::after{
+   background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='white' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
+}
+.custom-control-input:active~.custom-control-label::before{
+   border: black;
+}
+
+ /* focus shadow  */
+.custom-checkbox .custom-control-input:focus~.custom-control-label::before{
+   box-shadow: none; 
+}
+
+.btn.btn-primary.btn-register {
+   background-color: #c7a38f;
+   border-radius: 0;
+   border: none;
+   letter-spacing: .1rem;
+}
+
+.btn.btn-primary.btn-register[disabled],
+.btn.btn-primary.btn-register[disabled]:hover {
+   background-color: #efdacd;
+   color: #564d4d;
+   border-radius: 0;
+   border: none;
+   letter-spacing: .1rem;
+}
+
+.btn.btn-primary.btn-register:hover,
+.btn.btn-primary.btn-register:active {
+   background-color: #c7a38f;
+   box-shadow: none!important; 
+}
+
+.btn.btn-primary.btn-login,
+.btn.btn-block.btn-dark.btn-load-more {
+   background-color: #efdacd;
+   color: #564d4d;
+   border-radius: 0;
+   border: none;
+   letter-spacing: .1rem;
+   box-shadow: none!important; 
+}
+
+.btn.btn-primary.btn-login:hover,
+.btn.btn-primary.btn-login:active,
+.btn.btn-block.btn-dark.btn-load-more:hover,
+.btn.btn-block.btn-dark.btn-load-more:active {
+   background-color: #c7a38f;
+   color: #ffffff;
+   border-radius: 0;
+   border: none;
+   letter-spacing: .1rem;
+   box-shadow: none!important; 
+}
+
+.btn.btn-block.btn-dark.btn-load-more {
+   font-family: 'Work Sans', sans-serif;
+   padding: 1em;
+}

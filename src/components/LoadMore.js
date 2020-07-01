@@ -5,7 +5,7 @@ export class LoadMore extends React.Component {
       const {label, disabled, onClick} = this.props;
 
       return (
-         <button className="btn btn-block btn-dark" disabled={disabled} onClick={onClick}>
+         <button className="btn btn-block btn-dark btn-load-more" disabled={disabled} onClick={onClick}>
             {label}
          </button>
       )

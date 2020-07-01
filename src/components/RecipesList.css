@@ -33,6 +33,11 @@ div.card-styling:hover{
    text-transform: uppercase;
 }
 
+img.img-recipe-list {
+   height: 100%;
+   width: 100%;
+}
+
 @media (min-width: 993px) {
    .responsive-card{
       padding: 0 16vw;

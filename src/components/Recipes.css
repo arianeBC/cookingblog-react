@@ -10,7 +10,7 @@ h2 {
    text-transform: uppercase;
 }
 
-.card-body {
+.card-body.recipe {
    font-family: 'Work Sans', sans-serif;
    font-size: .8rem;
    text-transform: uppercase;

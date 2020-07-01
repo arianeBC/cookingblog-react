@@ -12,13 +12,13 @@ export class Recipes extends React.Component {
 
       return (
          <div className="container">
-            <div className="card-body">
+            <div className="card-body recipe">
                <h2>{post.title}</h2>
                <p className="card-text border-top"></p>
                <p><strong>Ingrédients</strong></p>
-               <p className="card-text listing">{post.ingredients && post.ingredients.split("<br>").join("\n")}</p>
+               <p className="card-text listing">{post.ingredients && post.ingredients.split("<br>").join("\n\n")}</p>
                <p><strong>Préparation</strong></p>
-               <p className="card-text listing">{post.content.split("<br>").join("\n")}</p>
+               <p className="card-text listing">{post.content.split("<br>").join("\n\n")}</p>
                <p className="card-text border-top"></p>
             </div>
          </div>
