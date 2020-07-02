@@ -3,7 +3,6 @@ import timeago from 'timeago.js';
 import {Link} from 'react-router-dom';
 import {Message} from './Message';
 import './RecipesList.css';
-import { recipeAdd } from '../actions/actions';
 
 const timeago_fr = function(number, index, total_sec) {
    return [

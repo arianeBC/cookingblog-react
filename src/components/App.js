@@ -3,6 +3,7 @@ import {Route, Switch} from 'react-router';
 import LoginForm from './LoginForm';
 import RecipesListContainer from './RecipesListContainer';
 import RecipesContainer from './RecipesContainer';
+import HomepageContainer from './HomepageContainer';
 import Header from './Header';
 import {requests} from '../agent';
 import {connect} from 'react-redux';
@@ -56,6 +57,7 @@ class App extends React.Component {
                <Route path="/recipes-form" component={RecipesForm}/>
                <Route path="/recipes/:id" component={RecipesContainer}/>
                <Route path="/register" component={RegistrationContainer}/>
+               <Route path="/home" component={HomepageContainer}/>
                <Route path="/:page?" component={RecipesListContainer}/>
             </Switch>
          </div>

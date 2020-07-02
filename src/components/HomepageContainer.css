@@ -1,0 +1,51 @@
+div.home-container {
+   min-height: 100vh;
+}
+
+h1,
+div > p.home-text,
+.btn.btn-primary.btn-home {
+   font-family: 'Work Sans', sans-serif;
+   text-align: center;
+}
+
+h1 {
+   font-size: 1.7rem;
+   line-height: 3rem;
+   letter-spacing: .1rem;
+   text-transform: uppercase;
+   text-decoration: none solid rgb(151, 151, 151);
+   vertical-align: top;
+}
+
+div > h1 > span.home-logo {
+   font-family: 'Reenie Beanie', serif;
+   text-transform: capitalize;
+   font-size: 3rem;
+}
+
+div.col-md-6.col-sm-12.home-image {
+   padding: 0;
+}
+
+div > p.home-text {
+   font-size: 1rem;
+   line-height: 3rem;
+   letter-spacing: .1rem;
+}
+
+.btn.btn-primary.btn-home {
+   background-color: #efdacd;
+   color: #564d4d;
+   border-radius: 0;
+   border: none;
+   letter-spacing: .1rem;
+   box-shadow: none!important; 
+   margin: 2rem 5rem;
+}
+
+.btn.btn-primary.btn-home:hover,
+.btn.btn-primary.btn-home:active {
+   background-color: #c7a38f;
+   color: #ffffff!important;
+}

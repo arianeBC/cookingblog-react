@@ -65,7 +65,7 @@ class RegistrationContainer extends React.Component {
                      {/* Vous serez redirigé vers la page d'accueil dans&nbsp;
                      {this.state.counter} secondes */}
                   </p>
-                  <a href="/" class="btn btn-primary btn-big btn-block btn-login">Retour à la page d'accueil</a>
+                  <a href="/" className="btn btn-primary btn-big btn-block btn-login">Retour à la page d'accueil</a>
                </div>
             </div>
          </div>
