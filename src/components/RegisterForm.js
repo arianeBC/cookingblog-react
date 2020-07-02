@@ -34,11 +34,11 @@ class RegisterForm extends React.Component {
             <h3 className="pt-5 form-name">Inscription</h3>
                <div className="card card-body mt-5 body-form">
                   <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                     <Field name="usergroup" label="Nom et prénom" type="text" component={renderField}/>
                      <Field name="username" label="Nom d'utilisateur" type="text" component={renderField}/>
-                     <Field name="email" label="Email" type="text" component={renderField}/>
                      <Field name="password" label="Mot de passe" type="password" component={renderField}/>
                      <Field name="retypedPassword" label="Confirmer le mot de passe" type="password" component={renderField}/>
+                     <Field name="email" label="Email" type="text" component={renderField}/>
+                     <Field name="usergroup" label="Nom et prénom" type="text" component={renderField}/>
 
                      <div className="form-check form-group custom-control custom-checkbox">
                         <input className="form-check-input custom-control-input" type="checkbox"

@@ -15,7 +15,8 @@ button.btn-form {
    background-color: #c7a38f;
 }
 
-form {
+form,
+.text-form {
    font-family: 'Work Sans', sans-serif;
    font-size: .9rem;
 }
@@ -30,6 +31,10 @@ form {
    border-radius: 0;
    border: none;
    padding: 2rem;
+}
+
+.body-form-color {
+   background-color: #fff9f5;
 }
 
 .card-body.body-form.body-comment {
@@ -107,5 +112,5 @@ form {
 
 .btn.btn-block.btn-dark.btn-load-more {
    font-family: 'Work Sans', sans-serif;
-   padding: 1em;
+   padding: .4em;
 }

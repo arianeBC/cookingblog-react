@@ -56,13 +56,17 @@ class RegistrationContainer extends React.Component {
       }
 
       return (
-         <div className="card mt-3 mb-6 shadow-sm">
-            <div className="card-body">
-               <h2>Félicitation !</h2>
-               <p>
-                  Vous avez confirmé votre compte. Vous serez redirigé vers la page d'accueil dans&nbsp;
-                  {this.state.counter} secondes
-               </p>
+         <div className="row">
+            <div className="col-md-6 mx-auto">
+            <h3 className="pt-5 form-name">Félicitation !</h3>
+               <div className="card card-body mt-5 body-form-color">
+                  <p className="text-form">
+                     Vous avez confirmé votre compte. 
+                     {/* Vous serez redirigé vers la page d'accueil dans&nbsp;
+                     {this.state.counter} secondes */}
+                  </p>
+                  <a href="/" class="btn btn-primary btn-big btn-block btn-login">Retour à la page d'accueil</a>
+               </div>
             </div>
          </div>
       )
