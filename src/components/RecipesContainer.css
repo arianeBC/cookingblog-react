@@ -24,6 +24,11 @@
    padding: 3rem;
 }
 
+.return-to-list {
+   font-family: 'Work Sans', sans-serif;
+   font-size: .8rem;
+   color: black;
+}
 
 @media (max-width: 576px) {
    .recipe-comments {

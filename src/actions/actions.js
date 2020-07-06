@@ -58,7 +58,7 @@ export const recipesListSetPage = (page) => ({
 export const recipesListFetch = (page = 1) => {
    return (dispatch) => {
       dispatch(recipesListRequest());
-      return requests.get(`/recipes?_page=${page}`)
+      return requests.get(`/api/recipes?_page=${page}`)
          .then(response => dispatch(recipesListReceived(response)))
          .catch(error => dispatch(recipesListError(error)));
    }
@@ -143,8 +143,6 @@ export const commentsListFetch = (id, page = 1) => {
    return (dispatch) => {
       dispatch(commentsListRequest());
       return requests.get(`/recipes/${id}/comments?_page=${page}`)
-      // return requests.get(`/comments?recipe=/api/recipes/${id}?_page=${page}`)
-      // return requests.get(`/comments?recipe=${id}?_page=${page}`)
          .then(response => dispatch(commentsListReceived(response)))
          .catch(error => dispatch(commentsListError(error)));
    }
@@ -160,8 +158,8 @@ export const commentAdd = (comment, recipeId) => {
       return requests.post(
          '/comments',
          {
-            content: comment,
-            recipe: `api/recipes/${recipeId}`
+            recipe: `api/recipes/${recipeId}`,
+            content: comment
          }
       ).then(response => dispatch(commentAdded(response))
       ).catch(error => {
@@ -347,6 +345,15 @@ export const imagesListFetch = (id) => {
    return (dispatch) => {
       dispatch(imagesListRequest());
       return requests.get(`/recipes/${id}/images`)
+         .then(response => dispatch(imagesListReceived(response)))
+         .catch(error => dispatch(imagesListError(error)));
+   }
+};
+
+export const imagesListFetchIRI = (IRI) => {
+   return (dispatch) => {
+      dispatch(imagesListRequest());
+      return requests.get(`${IRI}`)
          .then(response => dispatch(imagesListReceived(response)))
          .catch(error => dispatch(imagesListError(error)));
    }

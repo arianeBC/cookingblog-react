@@ -38,6 +38,7 @@ class RecipesContainer extends React.Component {
             <div className="row recipe-and-img-container">
                <div className="col-md-6 col-sm-12 img-container">
                   <div className="recipe-img">
+                     <a href="/" className="return-to-list">&lt; Retour</a>
                      <ImagesListContainer recipeId={this.props.match.params.id} />
                   </div>
                </div>
