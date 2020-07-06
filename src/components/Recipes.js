@@ -7,7 +7,7 @@ export class Recipes extends React.Component {
       const {post} = this.props;
 
       if (null === post) {
-         return (<Message message="Cette recette n'existe pas."/>);
+         return (<Message message="Cette recette n'est pas disponible."/>);
       }
 
       return (

@@ -6,7 +6,7 @@ export class ImagesList extends React.Component {
       const {imagesList} = this.props;
 
       if (null === imagesList || 0 === imagesList.length) {
-         return (<Message message="No image"/>);
+         return (<Message message="Aucune image"/>);
       }
 
       return (

@@ -49,3 +49,8 @@ div > p.home-text {
    background-color: #c7a38f;
    color: #ffffff!important;
 }
+
+.fas.fa-spinner.fa-spin {
+   color: lightgrey;
+   margin-top: 30vh;
+}

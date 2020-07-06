@@ -58,7 +58,7 @@ export const recipesListSetPage = (page) => ({
 export const recipesListFetch = (page = 1) => {
    return (dispatch) => {
       dispatch(recipesListRequest());
-      return requests.get(`/api/recipes?_page=${page}`)
+      return requests.get(`/recipes?_page=${page}`)
          .then(response => dispatch(recipesListReceived(response)))
          .catch(error => dispatch(recipesListError(error)));
    }
@@ -185,7 +185,7 @@ export const userLoginAttempt = (username, password) => {
          .then(response => dispatch(userLoginSuccess(response.token, response.id)))
          .catch(() => {
          throw new SubmissionError({
-            _error: 'Username or password is invalid'
+            _error: "Le nom d'utilisateur ou le mot de passe est incorrect"
          })
       });
    }
