@@ -27,7 +27,7 @@ div.card-styling:hover{
    transition: 1s;
 }
 
-.card-body .card-text {
+.preparation-time {
    font-family: 'Work Sans', sans-serif;
    font-size: .8rem;
    text-transform: uppercase;

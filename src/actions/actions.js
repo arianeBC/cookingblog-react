@@ -73,31 +73,6 @@ export const recipesListByCategory = (category) => {
    }
 };
 
-// export const recipesListFetch = (page = 1) => {
-//    return (dispatch) => {
-//       dispatch(recipesListRequest());
-//       return requests
-//          .get(`/recipes?_page=${page}`)
-//          .then(async (response) => {
-//             //make then callback as async fun
-//             const recipes = response["hydra:member"];
-//             const imagesForRecipe = [];
-//             for (let i = 0; i < recipes.length; i++) {//loop thru recipes
-//             for (let j = 0; j < recipes[i].image.length; j++) {//loop thru images for each recipe
-//                const imageUrlProperty = recipes[i].image[j];//grab the image url
-//                const imageUrl = imageUrlProperty.substr(4);
-//                const image = await requests.get(`${imageUrl}`);
-
-//                imagesForRecipe.push(image);
-//             }
-//             recipes[i].image = imagesForRecipe; //mutate the object which will directly update the response
-//             }
-//             dispatch(recipesListReceived(response));
-//          })
-//          .catch((error) => dispatch(recipesListError(error)));
-//    };
-// };
-
 export const recipesListFetch = (page = 1) => {
    return (dispatch) => {
       dispatch(recipesListRequest());
@@ -162,7 +137,7 @@ export const recipesFetch = (id) => {
    }
 };
 
-export const recipeAdd = (category, theme, title, ingredients, content, image = []) => {
+export const recipeAdd = (category, theme, title, ingredients, content, image = [], time) => {
    return (dispatch) => {
       return requests.post(
          '/recipes',
@@ -173,7 +148,8 @@ export const recipeAdd = (category, theme, title, ingredients, content, image = 
             ingredients,
             content,
             slug: title && title.replace(/ /g, "-").toLowerCase(),
-            image: image.map(images => `/api/images/${images.id}`)
+            image: image.map(images => `/api/images/${images.id}`),
+            time
          }
       ).catch(error => {
          if (401 === error.response.status) {

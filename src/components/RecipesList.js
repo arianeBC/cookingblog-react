@@ -23,7 +23,7 @@ class RecipesList extends React.Component {
                            )}
                            <div className="card-body">
                               <h3 className="recipe-title">{post.title}</h3>
-                              <p className="card-text d-flex justify-content-center">
+                              <p className="card-text d-flex justify-content-center preparation-time">
                                  <small className="text-muted">{post.time}</small>
                               </p>
                            </div>

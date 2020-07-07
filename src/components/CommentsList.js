@@ -39,10 +39,10 @@ export class CommentsList extends React.Component {
                return (
                   <CSSTransition key={comment.id} timeout={600} classNames="fade">
                      <div className="card-body border-bottom">
-                        <p className="card-text mb-6">
+                        <p className="card-text mb-6 comment-content">
                            {comment.content}
                         </p>
-                        <p className="card-text">
+                        <p className="card-text comment-time">
                            <small className="text-muted">
                               {timeago().format(comment.published, 'fr')} par&nbsp;
                               {comment.user.usergroup}

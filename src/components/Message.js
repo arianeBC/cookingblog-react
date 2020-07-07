@@ -6,7 +6,7 @@ export class Message extends React.Component {
       const {message} = this.props;
 
       return (
-         <div className="comments">
+         <div className="message">
          <div className="row">
             <div className="offset-lg-2 col-lg-8 col-sm-12">
                <div className="card-text">

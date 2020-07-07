@@ -23,7 +23,7 @@ class RecipesForm extends React.Component {
    onSubmit(values) {
       const {recipeAdd, reset, history, images} = this.props;
 
-      return recipeAdd(values.category, values.theme, values.title, values.ingredients, values.content, images)
+      return recipeAdd(values.category, values.theme, values.title, values.ingredients, values.content, images, values.time)
          .then(() => {
             reset();
             history.push('/');
@@ -53,6 +53,7 @@ class RecipesForm extends React.Component {
                      <Field name="content" label="Préparation" type="textarea" component={renderField} />
                      <Field name="category" label="Catégorie" type="hidden" component={renderField}/>
                      <Field name="theme" label="Thème" type="text" component={renderField}/>
+                     <Field name="time" label="Temps de préparation" type="text" component={renderField}/>
 
                      <ImageUpload />
                      <ImageBrowser images={images} 
