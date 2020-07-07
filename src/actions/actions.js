@@ -55,13 +55,84 @@ export const recipesListSetPage = (page) => ({
    page
 });
 
-export const recipesListFetch = (page = 1) => {
+// export const recipesListFetch = (page = 1) => {
+//    return (dispatch) => {
+//       dispatch(recipesListRequest());
+//       return requests.get(`/recipes?_page=${page}`)
+//          .then(response => dispatch(recipesListReceived(response)))
+//          .catch(error => dispatch(recipesListError(error)));
+//    }
+// };
+
+export const recipesListByCategory = (category) => {
    return (dispatch) => {
       dispatch(recipesListRequest());
-      return requests.get(`/recipes?_page=${page}`)
+      return requests.get(`/recipes?category=${category}`)
          .then(response => dispatch(recipesListReceived(response)))
          .catch(error => dispatch(recipesListError(error)));
    }
+};
+
+// export const recipesListFetch = (page = 1) => {
+//    return (dispatch) => {
+//       dispatch(recipesListRequest());
+//       return requests
+//          .get(`/recipes?_page=${page}`)
+//          .then(async (response) => {
+//             //make then callback as async fun
+//             const recipes = response["hydra:member"];
+//             const imagesForRecipe = [];
+//             for (let i = 0; i < recipes.length; i++) {//loop thru recipes
+//             for (let j = 0; j < recipes[i].image.length; j++) {//loop thru images for each recipe
+//                const imageUrlProperty = recipes[i].image[j];//grab the image url
+//                const imageUrl = imageUrlProperty.substr(4);
+//                const image = await requests.get(`${imageUrl}`);
+
+//                imagesForRecipe.push(image);
+//             }
+//             recipes[i].image = imagesForRecipe; //mutate the object which will directly update the response
+//             }
+//             dispatch(recipesListReceived(response));
+//          })
+//          .catch((error) => dispatch(recipesListError(error)));
+//    };
+// };
+
+export const recipesListFetch = (page = 1) => {
+   return (dispatch) => {
+      dispatch(recipesListRequest());
+      return requests
+         .get(`/recipes?_page=${page}`)
+         .then(async (response) => {
+            // i strongly advice to not mutate the response object
+            // im not sure how your request method works, but if response is immutable
+            // your recipes will never actually get added
+            // to prevent that you can dispatch a new object instead of the response
+      
+            const recipes = response["hydra:member"];
+
+            for (let i = 0; i < recipes.length; i++) {
+              // move this into the first for loop, becuase you want to start with 
+              // an empty array for every recipe
+               const imagesForRecipe = [];
+
+               for (let j = 0; j < recipes[i].image.length; j++) {
+               const imageUrlProperty = recipes[i].image[j];
+               const imageUrl = imageUrlProperty.substr(4);
+               const image = await requests.get(`${imageUrl}`);
+
+               imagesForRecipe.push(image);
+               }
+               // here you assign only the images for a specific recipe
+               recipes[i].image = imagesForRecipe;
+            }
+            // return a new object with updated recipes
+            const editedResponse = { ...response, "hydra:member": recipes };
+
+            dispatch(recipesListReceived(editedResponse));
+         })
+         .catch((error) => dispatch(recipesListError(error)));
+   };
 };
 
 export const recipesRequest = () => ({
