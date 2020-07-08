@@ -55,24 +55,6 @@ export const recipesListSetPage = (page) => ({
    page
 });
 
-// export const recipesListFetch = (page = 1) => {
-//    return (dispatch) => {
-//       dispatch(recipesListRequest());
-//       return requests.get(`/recipes?_page=${page}`)
-//          .then(response => dispatch(recipesListReceived(response)))
-//          .catch(error => dispatch(recipesListError(error)));
-//    }
-// };
-
-export const recipesListByCategory = (category) => {
-   return (dispatch) => {
-      dispatch(recipesListRequest());
-      return requests.get(`/recipes?category=${category}`)
-         .then(response => dispatch(recipesListReceived(response)))
-         .catch(error => dispatch(recipesListError(error)));
-   }
-};
-
 export const recipesListFetch = (page = 1) => {
    return (dispatch) => {
       dispatch(recipesListRequest());
@@ -102,6 +84,90 @@ export const recipesListFetch = (page = 1) => {
                recipes[i].image = imagesForRecipe;
             }
             // return a new object with updated recipes
+            const editedResponse = { ...response, "hydra:member": recipes };
+
+            dispatch(recipesListReceived(editedResponse));
+         })
+         .catch((error) => dispatch(recipesListError(error)));
+   };
+};
+
+export const recipesListFetchByDessert = (page = 1) => {
+   return (dispatch) => {
+      dispatch(recipesListRequest());
+      return requests
+         .get(`/recipes?category=/api/categories/12?_page=${page}`)
+         .then(async (response) => {
+
+            const recipes = response["hydra:member"];
+
+            for (let i = 0; i < recipes.length; i++) {
+               const imagesForRecipe = [];
+               for (let j = 0; j < recipes[i].image.length; j++) {
+               const imageUrlProperty = recipes[i].image[j];
+               const imageUrl = imageUrlProperty.substr(4);
+               const image = await requests.get(`${imageUrl}`);
+
+               imagesForRecipe.push(image);
+               }
+               recipes[i].image = imagesForRecipe;
+            }
+            const editedResponse = { ...response, "hydra:member": recipes };
+
+            dispatch(recipesListReceived(editedResponse));
+         })
+         .catch((error) => dispatch(recipesListError(error)));
+   };
+};
+
+export const recipesListFetchByPlats = (page = 1) => {
+   return (dispatch) => {
+      dispatch(recipesListRequest());
+      return requests
+         .get(`/recipes?category=/api/categories/11?_page=${page}`)
+         .then(async (response) => {
+
+            const recipes = response["hydra:member"];
+
+            for (let i = 0; i < recipes.length; i++) {
+               const imagesForRecipe = [];
+               for (let j = 0; j < recipes[i].image.length; j++) {
+               const imageUrlProperty = recipes[i].image[j];
+               const imageUrl = imageUrlProperty.substr(4);
+               const image = await requests.get(`${imageUrl}`);
+
+               imagesForRecipe.push(image);
+               }
+               recipes[i].image = imagesForRecipe;
+            }
+            const editedResponse = { ...response, "hydra:member": recipes };
+
+            dispatch(recipesListReceived(editedResponse));
+         })
+         .catch((error) => dispatch(recipesListError(error)));
+   };
+};
+
+export const recipesListFetchByEntrees = (page = 1) => {
+   return (dispatch) => {
+      dispatch(recipesListRequest());
+      return requests
+         .get(`/recipes?category=/api/categories/14?_page=${page}`)
+         .then(async (response) => {
+
+            const recipes = response["hydra:member"];
+
+            for (let i = 0; i < recipes.length; i++) {
+               const imagesForRecipe = [];
+               for (let j = 0; j < recipes[i].image.length; j++) {
+               const imageUrlProperty = recipes[i].image[j];
+               const imageUrl = imageUrlProperty.substr(4);
+               const image = await requests.get(`${imageUrl}`);
+
+               imagesForRecipe.push(image);
+               }
+               recipes[i].image = imagesForRecipe;
+            }
             const editedResponse = { ...response, "hydra:member": recipes };
 
             dispatch(recipesListReceived(editedResponse));

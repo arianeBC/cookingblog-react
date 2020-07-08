@@ -12,7 +12,7 @@ class RecipesList extends React.Component {
       }
 
       return (
-         <div className="container-fluid padding pt-5 responsive-card">
+         <div className="container-fluid padding responsive-card">
             <div className="row padding">
                {posts && posts.map(post => (
                   <div className="col-md-6 col-lg-3 add-padding" key={post.id}>

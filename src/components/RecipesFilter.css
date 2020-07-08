@@ -1,0 +1,28 @@
+.btn.btn-primary.btn-recipes {
+   padding: 0;
+   color: #564d4d;
+   letter-spacing: .1rem;
+   background-color: #f4f4f4;
+   border: none;
+   border-radius: 0;
+   box-shadow: none!important; 
+   border-bottom: 1px solid #f4f4f4;
+}
+
+.btn.btn-primary.btn-recipes:hover, 
+.btn.btn-primary.btn-recipes:active {
+   color: #ffffff;
+   background-color: #f4f4f4;
+   border: none;
+   border-radius: 0;
+   letter-spacing: .1rem;
+   box-shadow: none!important; 
+   border-bottom: 1px solid black;
+}
+
+.btn-box {
+   margin: .8rem 0;
+   padding: .8rem 2rem;
+   background-color: #f4f4f4;
+}
+

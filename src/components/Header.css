@@ -33,6 +33,13 @@ span.logo {
    text-decoration: none solid rgb(151, 151, 151);
 }
 
+.page-title {
+   font-family: 'Abhaya Libre', serif;
+   font-size: 2rem;
+   text-align: center;
+   padding-bottom: 1rem;
+}
+
 @media (max-width: 576px) {
    .subject {
       display: none;
