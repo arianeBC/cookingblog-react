@@ -1,5 +1,5 @@
 import React from 'react';
-import './RecipesFilter.css';
+import '../css/RecipesFilter.css';
 
 export class RecipesFilter extends React.Component {
    render() {

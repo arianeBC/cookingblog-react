@@ -2,7 +2,7 @@ import React from 'react';
 import timeago from 'timeago.js';
 import {Message} from './Message';
 import {TransitionGroup, CSSTransition} from 'react-transition-group';
-import './CommentList.css';
+import '../css/CommentList.css';
 
 const timeago_fr = function(number, index, total_sec) {
    return [

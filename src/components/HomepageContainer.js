@@ -1,5 +1,5 @@
 import React from 'react';
-import './HomepageContainer.css';
+import '../css/HomepageContainer.css';
 import {HomeCarousel} from './HomeCarousel';
 
 export default class HomepageContainer extends React.Component {

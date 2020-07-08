@@ -5,7 +5,7 @@ import {Recipes} from './Recipes';
 import {Spinner} from './Spinner';
 import CommentsListContainer from './CommentsListContainer';
 import ImagesListContainer from './ImagesListContainer';
-import './RecipesContainer.css';
+import '../css/RecipesContainer.css';
 
 const mapeStateToProps = state => ({
    ...state.recipes

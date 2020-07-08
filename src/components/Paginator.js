@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import './Paginator.css';
+import '../css/Paginator.css';
 
 export class Paginator extends React.Component {
    constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Message} from './Message';
-import './Recipes.css';
+import '../css/Recipes.css';
 
 export class Recipes extends React.Component {
    render() {

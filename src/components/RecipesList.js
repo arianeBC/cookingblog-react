@@ -1,12 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {Message} from './Message';
-import './RecipesList.css';
+import '../css/RecipesList.css';
 
 class RecipesList extends React.Component {
 
    render() {
       const {posts} = this.props;
+      console.log(this.props);
       if (null === posts || 0 === posts.length) {
          return (<Message message="Aucune recette trouvé"/>);
       }
