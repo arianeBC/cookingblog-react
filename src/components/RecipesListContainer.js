@@ -4,7 +4,6 @@ import {recipesListFetch, recipesListSetPage} from '../actions/actions';
 import {connect} from 'react-redux';
 import {Spinner} from './Spinner';
 import {Paginator} from './Paginator';
-import {RecipesFilter} from './RecipesFilter';
 
 const mapStateToProps = state => ({
    ...state.recipesList
@@ -63,7 +62,6 @@ class RecipesListContainer extends React.Component {
       return (
          <div>
             <h3 className="page-title pt-5">Toutes les recettes</h3>
-            <RecipesFilter/>
             <RecipesList posts={posts} />
             <Paginator currentPage={currentPage} pageCount={pageCount} 
                      setPage={this.changePage.bind(this)}

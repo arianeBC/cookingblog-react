@@ -10,9 +10,6 @@ import {connect} from 'react-redux';
 import {userProfileFetch, userSetId, userLogout} from '../actions/actions';
 import RegistrationContainer from './RegistrationContainer';
 import RecipesForm from './RecipesForm';
-import Entrees from './Entrees';
-import Plats from './Plats';
-import Desserts from './Desserts';
 
 const mapStateToProps = state => ({
    ...state.auth
@@ -61,9 +58,6 @@ class App extends React.Component {
                <Route path="/recipes/:id" component={RecipesContainer}/>
                <Route path="/register" component={RegistrationContainer}/>
                <Route path="/home" component={HomepageContainer}/>
-               <Route path="/entrees" component={Entrees}/>
-               <Route path="/plats" component={Plats}/>
-               <Route path="/desserts" component={Desserts}/>
                <Route path="/:page?" component={RecipesListContainer}/>
             </Switch>
          </div>

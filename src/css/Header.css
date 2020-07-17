@@ -18,7 +18,8 @@ span.separator {
    padding: 0 .8rem;
 }
 
-span.logo {
+span.logo,
+span.logo-small {
    font-family: 'Reenie Beanie', serif;
    text-transform: capitalize;
    font-size: 1.6rem;
@@ -40,8 +41,20 @@ span.logo {
    padding-bottom: 1rem;
 }
 
+.session-name {
+   font-weight: 400;
+}
+
 @media (max-width: 576px) {
-   .subject {
+   .subject,
+   .logo,
+   .session-name {
+      display: none;
+   }
+}
+
+@media (min-width: 577px) {
+   .logo-small {
       display: none;
    }
 }

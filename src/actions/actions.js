@@ -61,16 +61,11 @@ export const recipesListFetch = (page = 1) => {
       return requests
          .get(`/recipes?_page=${page}`)
          .then(async (response) => {
-            // i strongly advice to not mutate the response object
-            // im not sure how your request method works, but if response is immutable
-            // your recipes will never actually get added
-            // to prevent that you can dispatch a new object instead of the response
       
             const recipes = response["hydra:member"];
 
             for (let i = 0; i < recipes.length; i++) {
-              // move this into the first for loop, becuase you want to start with 
-              // an empty array for every recipe
+
                const imagesForRecipe = [];
 
                for (let j = 0; j < recipes[i].image.length; j++) {
@@ -80,10 +75,10 @@ export const recipesListFetch = (page = 1) => {
 
                imagesForRecipe.push(image);
                }
-               // here you assign only the images for a specific recipe
+
                recipes[i].image = imagesForRecipe;
             }
-            // return a new object with updated recipes
+
             const editedResponse = { ...response, "hydra:member": recipes };
 
             dispatch(recipesListReceived(editedResponse));

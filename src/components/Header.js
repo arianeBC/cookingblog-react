@@ -12,7 +12,7 @@ export default class Header extends React.Component {
 
       return (
          <span>
-            {userData.usergroup}&nbsp; |
+            <strong className="session-name">{userData.usergroup}&nbsp; |</strong>
             <button className="navbar-text btn btn-link btn-sm navbar-styling" href="#" onClick={logout}>Déconnexion</button>
          </span>
       );
@@ -26,7 +26,7 @@ export default class Header extends React.Component {
             <div className="row">
                <nav className="navbar fixed-top navbar-expand-md navbar-light full-width">
                   <Link to="/home" className="navbar-brand">
-                     <span className="subject">Cuisine </span><span className="logo">Sans gluten</span>
+                     <span className="subject">Cuisine </span><span className="logo">Sans gluten</span><span className="logo-small">SG</span>
                   </Link>
 
 
