@@ -1,8 +1,7 @@
 div.home-container {
-   min-height: 100vh;
+   max-height: 100vh;
+
 }
-
-
 
 h1,
 div > p.home-text,
@@ -28,7 +27,8 @@ div > h1 > span.home-logo {
 
 div.col-md-6.col-sm-12.home-image {
    padding: 0;
-   min-height: 100vh;
+   max-height: 100vh;
+   overflow: hidden;
 }
 
 div > p.home-text {
@@ -58,29 +58,12 @@ div > p.home-text {
    margin-top: 30vh;
 }
 
-@media (max-width: 576px) {
+
+@media (max-width: 767px) {
    div.col-md-6.col-sm-12.home-image {
       min-height: 50vh;
    }
    .home-title {
       padding-top: 3rem;
-   }
-}
-
-@media (min-width: 768px) {
-   div.carousel-root {
-      margin-top: 22vh;
-   }
-}
-
-@media (min-width: 992px) {
-   div.carousel-root {
-      margin-top: 14vh;
-   }
-}
-
-@media (min-width: 1200px) {
-   div.carousel-root {
-      margin-top: 0;
    }
 }
