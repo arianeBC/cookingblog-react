@@ -80,7 +80,6 @@ export const recipesListFetch = (page = 1) => {
             }
 
             const editedResponse = { ...response, "hydra:member": recipes };
-
             dispatch(recipesListReceived(editedResponse));
          })
          .catch((error) => dispatch(recipesListError(error)));
