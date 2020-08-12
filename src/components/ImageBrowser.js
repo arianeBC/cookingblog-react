@@ -17,7 +17,7 @@ export class ImageBrowser extends React.Component {
                      <CSSTransition timeout={600} classNames="fade" key={image.id}> 
                         <div className="col-md-6 col-lg-4">
                            <div className="mt-2 mb-2">
-                              <img src={`http://sgcuisine${image.url}`}
+                              <img src={`http://arianedes.com${image.url}`}
                                     className="img-fluid" alt=""/>
                            </div>
                            <div>
