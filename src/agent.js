@@ -2,7 +2,7 @@ import superagentPromise from 'superagent-promise';
 import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
-const API_ROOT = 'http://arianedes.com/api';
+const API_ROOT = 'https://arianedes.com/api';
 const responseBody = response => response.body;
 
 let token = null;
