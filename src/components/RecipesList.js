@@ -20,7 +20,7 @@ class RecipesList extends React.Component {
                      <Link to={`/recipes/${post.id}`}>
                         <div className="card mb-3 mt-3 card-styling" >
                            {post.image.map(image => 
-                              <img key={image.id} src={`http://api.arianedes.com${image.url}`} className="img-recipe-list" alt=""/>
+                              <img key={image.id} src={`https://api.arianedes.com${image.url}`} className="img-recipe-list" alt=""/>
                            )}
                            <div className="card-body">
                               <h3 className="recipe-title">{post.title}</h3>
