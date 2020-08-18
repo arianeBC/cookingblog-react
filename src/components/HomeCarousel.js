@@ -7,13 +7,13 @@ export class HomeCarousel extends React.Component {
       return (
          <Carousel showArrows={false} showStatus={false} showThumbs={false} infiniteLoop autoPlay  stopOnHover swipeable emulateTouch>
                <div>
-                  <img src="https://arianedes.com/images/5f2cb02808d88205621076.jpg" alt=""/>
+                  <img src="http://api.arianedes.com/images/5f2cb02808d88205621076.jpg" alt=""/>
                </div>
                <div>
-                  <img src="https://arianedes.com/images/5f2cb311d2752491750844.jpg" alt=""/>
+                  <img src="http://api.arianedes.com/images/5f2cb311d2752491750844.jpg" alt=""/>
                </div>
                <div>
-                  <img src="https://arianedes.com/images/5f2cb032e1540389127975.jpg" alt=""/>
+                  <img src="http://api.arianedes.com/images/5f2cb032e1540389127975.jpg" alt=""/>
                </div>
          </Carousel>
       );
