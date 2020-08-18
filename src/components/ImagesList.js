@@ -14,9 +14,7 @@ export class ImagesList extends React.Component {
             {imagesList.map(image => {
                return (
                      <div key={image.id}>
-                        <img src={image.url} alt="" className="img-fluid"/>
-                        {/* <p>http://sgcuisine{image.url}</p> */}
-                        {/* <img src="http://sgcuisine/images/5efbe9a4a1404818118677.jpg" alt="" className="img-fluid" key={image.id}/> */}
+                        <img src={`http://api.arianedes.com${image.url}`} alt="" className="img-fluid"/>
                      </div>
                );
             })}
